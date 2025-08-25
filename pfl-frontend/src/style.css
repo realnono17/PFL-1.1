@@ -1,0 +1,201 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background: #0d1117;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem; /* Base font size increased by 2x */
+}
+
+/* Navbar */
+.navbar {
+  background: #161b22;
+  width: 100%;
+  padding: 3rem; /* Increased padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 120px; /* Increased height */
+}
+
+.navbar img {
+  height: 100px; /* Increased logo size */
+}
+
+.nav-links {
+  display: flex;
+  gap: 4rem; /* Increased gap */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5rem; /* Increased font size */
+}
+
+.nav-links a:hover {
+  color: #fbbf24;
+}
+
+/* Main Content */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem; /* Increased padding */
+  margin-top: 120px; /* Increased margin for fixed navbar */
+  margin-bottom: 120px; /* Increased margin for fixed footer */
+}
+
+.hero h1 {
+  font-size: 6rem; /* Increased font size */
+}
+
+.hero p {
+  font-size: 3rem; /* Increased font size */
+  color: gray;
+}
+
+/* Grid Layout */
+.grid {
+  display: flex;
+  gap: 4rem; /* Increased gap */
+  justify-content: center;
+  width: 100%;
+  max-width: 2400px; /* Increased max width */
+  padding: 4rem; /* Increased padding */
+  flex-wrap: wrap;
+}
+
+.grid article {
+  background: #161b22;
+  padding: 4rem; /* Increased padding */
+  border-radius: 16px; /* Increased border radius */
+  width: 30%;
+  min-height: 400px; /* Increased min height */
+  flex: 1 1 600px; /* Increased flex basis */
+}
+
+/* Footer */
+footer {
+  background: #161b22;
+  width: 100%;
+  padding: 3rem; /* Increased padding */
+  text-align: center;
+  color: gray;
+  font-size: 2.5rem; /* Increased font size */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 120px; /* Increased height */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 5rem; /* Adjusted for smaller screens */
+  }
+
+  .hero p {
+    font-size: 2.5rem; /* Adjusted for smaller screens */
+  }
+
+  .grid {
+    gap: 3rem; /* Adjusted gap */
+  }
+
+  .grid article {
+    width: 45%; /* Adjusted width */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem; /* Adjusted padding */
+  }
+
+  .navbar img {
+    height: 60px; /* Adjusted logo size */
+  }
+
+  .nav-links {
+    gap: 2rem; /* Adjusted gap */
+  }
+
+  .nav-links a {
+    font-size: 1.5rem; /* Adjusted font size */
+  }
+
+  .hero h1 {
+    font-size: 4rem; /* Adjusted font size */
+  }
+
+  .hero p {
+    font-size: 2rem; /* Adjusted font size */
+  }
+
+  .grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* Adjusted gap */
+    padding: 2rem; /* Adjusted padding */
+  }
+
+  .grid article {
+    width: 90%;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem; /* Adjusted padding */
+  }
+
+  .navbar img {
+    margin-bottom: 1rem; /* Adjusted margin */
+  }
+
+  .nav-links {
+    gap: 1rem; /* Adjusted gap */
+  }
+
+  .nav-links a {
+    font-size: 1.2rem; /* Adjusted font size */
+  }
+
+  .hero h1 {
+    font-size: 3rem; /* Adjusted font size */
+  }
+
+  .hero p {
+    font-size: 1.5rem; /* Adjusted font size */
+  }
+
+  .grid {
+    padding: 1rem; /* Adjusted padding */
+  }
+
+  .grid article {
+    width: 100%;
+    padding: 2rem; /* Adjusted padding */
+  }
+}

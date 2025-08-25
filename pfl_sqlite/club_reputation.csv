@@ -1,0 +1,503 @@
+Place,Last,Team Name,Country / Level,Country Code,Confederation,Points
+1,1,Real Madrid CF,Spain / 7,ESP,UEFA,403
+2,2,Manchester City FC,England / 7,ENG,UEFA,368
+3,3,Bayer 04 Leverkusen,Germany / 7,GER,UEFA,353
+4,4,Atalanta Bergamasca,Italy / 7,ITA,UEFA,318
+5,9,FC Barcelona,Spain / 7,ESP,UEFA,270
+6,6,Club Atletico Madrid,Spain / 7,ESP,UEFA,266
+7,5,BV Borussia 09 Dortmund,Germany / 7,GER,UEFA,264
+8,6,FC Bayern Munich,Germany / 7,GER,UEFA,256
+9,11,FC Internazionale Milano,Italy / 7,ITA,UEFA,254
+10,10,Arsenal FC,England / 7,ENG,UEFA,253
+11,12,Paris Saint-Germain FC,France / 6,FRA,UEFA,246
+12,14,AS Roma,Italy / 7,ITA,UEFA,245
+13,16,Liverpool FC,England / 7,ENG,UEFA,242
+14,18,Al Ahly SC,Egypt / 5,EGY,CAF,239
+15,13,Fortaleza EC,Brazil / 7,BRA,CONMEBOL,233,5
+16,16,CR Flamengo,Brazil / 7,BRA,CONMEBOL,231
+16,20,Botafogo FR,Brazil / 7,BRA,CONMEBOL,231
+16,19,São Paulo FC,Brazil / 7,BRA,CONMEBOL,231
+19,14,Fluminense FC,Brazil / 7,BRA,CONMEBOL,230
+19,21,Sporting Lisbon,Portugal / 6,POR,UEFA,230
+21,8,SE Palmeiras,Brazil / 7,BRA,CONMEBOL,229
+22,28,Club Atlético Mineiro,Brazil / 7,BRA,CONMEBOL,223
+23,23,AC Milan,Italy / 7,ITA,UEFA,222
+24,22,Union Saint-Gilloise,Belgium / 6,BEL,UEFA,217
+25,26,ACF Fiorentina,Italy / 7,ITA,UEFA,214
+25,25,Fenerbahce SK,Turkey / 6,TUR,UEFA,214
+27,41,CA River Plate,Argentina / 6,ARG,CONMEBOL,213
+28,30,SL Benfica,Portugal / 6,POR,UEFA,209
+29,51,AC Sparta Prague,Czech Republic / 5,CZE,UEFA,207
+30,35,SS Lazio,Italy / 7,ITA,UEFA,206
+31,24,Olympiakos CFP,Greece / 5,GRE,UEFA,205,5
+32,31,RB Bragantino,Brazil / 7,BRA,CONMEBOL,199
+33,33,PAOK Thessaloniki FC,Greece / 5,GRE,UEFA,198,5
+34,36,FC Porto,Portugal / 6,POR,UEFA,196
+35,27,Club Brugge KV,Belgium / 6,BEL,UEFA,195,5
+36,46,GNK Dinamo Zagreb,Croatia / 5,CRO,UEFA,194
+37,49,FC Viktoria Plzen,Czech Republic / 5,CZE,UEFA,192,5
+38,37,Aston Villa FC,England / 7,ENG,UEFA,189,5
+39,43,Club Athletico Paranaense,Brazil / 7,BRA,CONMEBOL,189
+39,48,RB Leipzig,Germany / 7,GER,UEFA,189
+41,64,Lille OSC,France / 6,FRA,UEFA,188
+42,29,PSV Eindhoven,Netherlands / 6,NED,UEFA,187
+42,58,Villarreal CF,Spain / 7,ESP,UEFA,187
+44,40,CA Boca Juniors,Argentina / 6,ARG,CONMEBOL,186,5
+45,42,Al Hilal FC,Saudi Arabia / 4,KSA,AFC,186
+45,53,Club Libertad,Paraguay / 5,PAR,CONMEBOL,186
+45,39,Olympique Marseille,France / 6,FRA,UEFA,186
+45,45,Feyenoord Rotterdam,Netherlands / 6,NED,UEFA,186
+45,49,Juventus FC,Italy / 7,ITA,UEFA,186
+50,58,Independiente Medellín,Colombia / 6,COL,CONMEBOL,185
+50,44,Real Sociedad,Spain / 7,ESP,UEFA,185
+52,34,Qarabag FK,Azerbaijan / 4,AZE,UEFA,182,75
+53,67,Cruzeiro EC,Brazil / 7,BRA,CONMEBOL,181
+54,63,Maccabi Tel Aviv FC,Israel / 5,ISR,UEFA,179,5
+55,65,Sporting Braga,Portugal / 6,POR,UEFA,177
+56,52,CDP Junior,Colombia / 6,COL,CONMEBOL,175,5
+57,32,Galatasaray SK,Turkey / 6,TUR,UEFA,174,5
+58,82,Grêmio FB,Brazil / 7,BRA,CONMEBOL,173
+59,60,Racing Club Avellaneda,Argentina / 6,ARG,CONMEBOL,172
+60,55,West Ham United FC,England / 7,ENG,UEFA,171
+61,79,SK Slavia Prague,Czech Republic / 5,CZE,UEFA,170,5
+62,62,Athletic Bilbao,Spain / 7,ESP,UEFA,170
+63,38,SC Internacional,Brazil / 7,BRA,CONMEBOL,169
+63,61,Manchester United FC,England / 7,ENG,UEFA,169
+63,69,KAA Gent,Belgium / 6,BEL,UEFA,169
+66,76,PFC Ludogorets,Bulgaria / 4,BUL,UEFA,167,75
+67,55,Rangers FC,Scotland / 5,SCO,UEFA,167,5
+68,80,CA Peñarol,Uruguay / 4,URU,CONMEBOL,166
+69,46,SC Corinthians,Brazil / 7,BRA,CONMEBOL,164
+70,70,SSC Napoli,Italy / 7,ITA,UEFA,163
+70,73,Brighton & Hove Albion FC,England / 7,ENG,UEFA,163
+72,67,SC Freiburg,Germany / 7,GER,UEFA,162
+73,81,Real Betis,Spain / 7,ESP,UEFA,161
+74,74,CA Talleres Córdoba,Argentina / 6,ARG,CONMEBOL,159,5
+75,66,Club Nacional,Uruguay / 4,URU,CONMEBOL,158,25
+76,115,CSD Colo Colo,Chile / 4,CHI,CONMEBOL,156,25
+77,113,LD Alajuelense,Costa Rica / 3,CRC,CONCACAF,154
+78,71,Al Nassr FC,Saudi Arabia / 4,KSA,AFC,153,25
+79,85,Ulsan Hyundai FC,Korea Republic / 4,KOR,AFC,153
+79,126,CA Lanús,Argentina / 6,ARG,CONMEBOL,153
+81,57,LDU Quito,Ecuador / 5,ECU,CONMEBOL,152,5
+82,90,Zamalek SC,Egypt / 5,EGY,CAF,151
+83,97,FK Bodø / Glimt,Norway / 4,NOR,UEFA,149,25
+84,75,Club América,Mexico / 4,MEX,CONCACAF,148,75
+85,84,Celtic FC,Scotland / 5,SCO,UEFA,147,5
+86,118,AFC Ajax,Netherlands / 6,NED,UEFA,146
+87,54,Club Estudiantes La Plata,Argentina / 6,ARG,CONMEBOL,145,5
+87,85,SK Sturm Graz,Austria / 5,AUT,UEFA,145,5
+87,98,Panathinaikos FC,Greece / 5,GRE,UEFA,145,5
+90,162,Pyramids FC,Egypt / 5,EGY,CAF,144,25
+91,83,FC Shakhtar Donetsk,Ukraine / 5,UKR,UEFA,143,5
+92,94,Cuiabá EC,Brazil / 7,BRA,CONMEBOL,142
+93,103,Club Cerro Porteño,Paraguay / 5,PAR,CONMEBOL,140,5
+94,85,Stade Rennais FC,France / 6,FRA,UEFA,140
+94,96,Bologna FC 1909,Italy / 7,ITA,UEFA,140
+94,106,RC Lens,France / 6,FRA,UEFA,140
+97,77,Maccabi Haifa FC,Israel / 5,ISR,UEFA,139,5
+98,138,CS Herediano,Costa Rica / 3,CRC,CONCACAF,139
+98,98,Newcastle United FC,England / 7,ENG,UEFA,139
+98,101,Chelsea FC,England / 7,ENG,UEFA,139
+101,93,FC Pohang Steelers,Korea Republic / 4,KOR,AFC,138
+101,120,CA Rosario Central,Argentina / 6,ARG,CONMEBOL,138
+103,88,Millonarios FC,Colombia / 6,COL,CONMEBOL,136,5
+104,94,Girona FC,Spain / 7,ESP,UEFA,136
+105,89,Besiktas JK,Turkey / 6,TUR,UEFA,135
+106,77,CF Monterrey,Mexico / 4,MEX,CONCACAF,134,75
+107,98,Kawasaki Frontale,Japan / 4,JPN,AFC,133,5
+107,92,FC Copenhagen,Denmark / 5,DEN,UEFA,133,5
+109,104,Servette Genève FC,Switzerland / 4,SUI,UEFA,133,25
+110,90,Ferencvaros TC,Hungary / 3,HUN,UEFA,133
+111,102,Yokohama F. Marinos,Japan / 4,JPN,AFC,132,25
+112,152,Deportivo Saprissa,Costa Rica / 3,CRC,CONCACAF,132
+112,156,Vitoria SC Guimaraes,Portugal / 6,POR,UEFA,132
+114,121,FCSB Bucureşti,Romania / 5,ROU,UEFA,128,5
+115,127,CD Palestino,Chile / 4,CHI,CONMEBOL,128
+116,115,Club Deportes Tolima,Colombia / 6,COL,CONMEBOL,127
+116,133,RCD Mallorca,Spain / 7,ESP,UEFA,127
+118,123,CF Tigres UANL,Mexico / 4,MEX,CONCACAF,126,75
+119,140,Trabzonspor K,Turkey / 6,TUR,UEFA,126,5
+120,109,VFB Stuttgart 1893,Germany / 7,GER,UEFA,126
+120,111,Molde FK,Norway / 4,NOR,UEFA,126
+120,129,FK Red Star Belgrade,Serbia / 4,SRB,UEFA,126
+123,174,FC Salzburg,Austria / 5,AUT,UEFA,124,5
+124,110,CA San Lorenzo,Argentina / 6,ARG,CONMEBOL,124
+125,105,Eintracht Frankfurt,Germany / 7,GER,UEFA,123
+126,145,Club Bolívar,Bolivia / 2,BOL,CONMEBOL,122,25
+127,115,Al Ain FC,United Arab Emirates / 2,UAE,AFC,121,75
+127,108,CF Pachuca,Mexico / 4,MEX,CONCACAF,121,75
+129,123,CA Belgrano,Argentina / 6,ARG,CONMEBOL,121,5
+129,133,AEK Athens FC,Greece / 5,GRE,UEFA,121,5
+131,119,RSB Berkane,Morocco / 4,MAR,CAF,121,25
+132,113,Al Ittihad FC,Saudi Arabia / 4,KSA,AFC,121
+132,72,CSD Defensa y Justicia,Argentina / 6,ARG,CONMEBOL,121
+134,161,Real Estelí FC,Nicaragua / 2,NCA,CONCACAF,120,5
+135,143,Sportivo Ameliano,Paraguay / 5,PAR,CONMEBOL,120
+135,107,AZ Alkmaar,Netherlands / 6,NED,UEFA,120
+135,155,KP Legia Warsaw,Poland / 4,POL,UEFA,120
+138,123,Toulouse FC,France / 6,FRA,UEFA,118
+138,226,Istanbul Basaksehir FK,Turkey / 6,TUR,UEFA,118
+140,182,FK Rigas FS,Latvia / 3,LVA,UEFA,117,5
+141,132,Central Coast Mariners,Australia / 2,AUS,AFC,117,25
+142,136,Racing Montevideo,Uruguay / 4,URU,CONMEBOL,116,5
+143,152,EC Bahia,Brazil / 7,BRA,CONMEBOL,116
+144,140,Barcelona SC,Ecuador / 5,ECU,CONMEBOL,115
+144,164,Torino FC,Italy / 7,ITA,UEFA,115
+144,148,HNK Rijeka,Croatia / 5,CRO,UEFA,115
+147,173,Columbus Crew,USA / 2,USA,CONCACAF,114,25
+148,143,CD Universidad Católica,Ecuador / 5,ECU,CONMEBOL,114
+149,133,KRC Genk,Belgium / 6,BEL,UEFA,113,5
+150,163,BSC Young Boys,Switzerland / 4,SUI,UEFA,112,5
+151,188,FC Midtjylland,Denmark / 5,DEN,UEFA,112
+152,146,Atlético Petro de Luanda,Angola / 2,ANG,CAF,111,75
+153,129,Argentinos Juniors,Argentina / 6,ARG,CONMEBOL,111,5
+154,142,Young Africans SC,Tanzania / 2,TAN,CAF,111,25
+155,146,Esperance ST,Tunisia / 3,TUN,CAF,110,75
+156,138,CSD Independiente Valle,Ecuador / 5,ECU,CONMEBOL,110,5
+156,160,Club Nacional,Paraguay / 5,PAR,CONMEBOL,110,5
+156,111,Royal Antwerp FC,Belgium / 6,BEL,UEFA,110,5
+159,149,Sevilla FC,Spain / 7,ESP,UEFA,110
+159,156,NEC Nijmegen,Netherlands / 6,NED,UEFA,110
+159,149,Tottenham Hotspur FC,England / 7,ENG,UEFA,110
+162,184,Club The Strongest,Bolivia / 2,BOL,CONMEBOL,109,5
+162,122,KF Ballkani,Kosovo / 3,KVX,UEFA,109,5
+164,152,Jeonbuk Hyundai Motors FC,Korea Republic / 4,KOR,AFC,108
+164,167,CR Vasco da Gama,Brazil / 7,BRA,CONMEBOL,108
+166,202,FC Dinamo Kiev,Ukraine / 5,UKR,UEFA,107,5
+167,156,Independiente Santa Fe,Colombia / 6,COL,CONMEBOL,105
+167,207,SK Rapid Vienna,Austria / 5,AUT,UEFA,105
+169,127,Club Atlético Nacional,Colombia / 6,COL,CONMEBOL,104
+170,185,CR Belouizdad,Algeria / 3,ALG,CAF,103
+170,208,CA Vélez Sarsfield,Argentina / 6,ARG,CONMEBOL,103
+170,226,Heidenheim,Germany / 7,GER,UEFA,103
+173,266,SK Slovan Bratislava,Slovakia / 3,SVK,UEFA,102,5
+174,156,TP Mazembe,Congo DR / 2,COD,CAF,102
+175,170,Club Always Ready,Bolivia / 2,BOL,CONMEBOL,101,5
+176,177,Genoa CFC,Italy / 7,ITA,UEFA,101
+176,215,RSC Anderlecht,Belgium / 6,BEL,UEFA,101
+178,174,Sportivo Trinidense,Paraguay / 5,PAR,CONMEBOL,100,5
+178,166,Águilas Doradas,Colombia / 6,COL,CONMEBOL,100,5
+178,275,CFR Cluj,Romania / 5,ROU,UEFA,100,5
+181,222,AC Omonia Nicosia,Cyprus / 4,CYP,UEFA,100
+181,236,NK Olimpija,Slovenia / 3,SVN,UEFA,100
+181,297,FC Noah,Armenia / 3,ARM,UEFA,100
+184,136,FC Nordsjælland,Denmark / 5,DEN,UEFA,99,5
+185,149,Mamelodi Sundowns FC,South Africa / 2,RSA,CAF,99
+185,171,USM Alger,Algeria / 3,ALG,CAF,99
+187,255,Cercle Brugge KSV,Belgium / 6,BEL,UEFA,98,5
+188,190,Raja CA Casablanca,Morocco / 4,MAR,CAF,98,25
+188,176,Club Universitario,Peru / 4,PER,CONMEBOL,98,25
+190,167,AS Monaco FC,France / 6,FRA,UEFA,98
+191,179,Bangkok United,Thailand / 2,THA,AFC,97
+191,186,Modern SC,Egypt / 5,EGY,CAF,97
+191,215,AFC Bournemouth,England / 7,ENG,UEFA,97
+194,181,CD Huachipato,Chile / 4,CHI,CONMEBOL,96,25
+195,198,Aberdeen FC,Scotland / 5,SCO,UEFA,96
+196,198,Deportivo Alaves,Spain / 7,ESP,UEFA,95
+197,187,Danubio FC,Uruguay / 4,URU,CONMEBOL,94,75
+198,167,Crystal Palace FC,England / 7,ENG,UEFA,94
+198,188,Olympique Lyonnais,France / 6,FRA,UEFA,94
+198,270,FC Lugano,Switzerland / 4,SUI,UEFA,94
+201,172,Club Atlético Bucaramanga,Colombia / 6,COL,CONMEBOL,93,5
+201,235,Godoy Cruz Antonio Tomba,Argentina / 6,ARG,CONMEBOL,93,5
+201,177,HSK Zrinjski,Bosnia and Herzegovina / 3,BIH,UEFA,93,5
+204,190,CD Guadalajara,Mexico / 4,MEX,CONCACAF,93
+204,165,FC Twente,Netherlands / 6,NED,UEFA,93
+204,204,Hapoel Be'er Sheva FC,Israel / 5,ISR,UEFA,93
+207,236,RC Celta Vigo,Spain / 7,ESP,UEFA,92
+207,294,Paksi FC,Hungary / 3,HUN,UEFA,92
+209,204,ASC Oţelul,Romania / 5,ROU,UEFA,91,5
+209,192,KÍ Klaksvík,Faroe Islands / 3,FRO,UEFA,91,5
+211,280,Zira IK,Azerbaijan / 4,AZE,UEFA,91,25
+212,215,Once Caldas SA,Colombia / 6,COL,CONMEBOL,91
+213,208,Club Alianza Lima,Peru / 4,PER,CONMEBOL,90
+213,219,FCI Levadia,Estonia / 3,EST,UEFA,90
+213,180,NK Celje,Slovenia / 3,SVN,UEFA,90
+213,281,FK Borac Banja Luka,Bosnia and Herzegovina / 3,BIH,UEFA,90
+217,129,Deportivo Pereira,Colombia / 6,COL,CONMEBOL,89
+218,241,HNK Hajduk Split,Croatia / 5,CRO,UEFA,88,5
+219,197,Shandong Taishan FC,China / 2,CHN,AFC,88,25
+220,226,Fulham FC,England / 7,ENG,UEFA,88
+220,266,FC Utrecht,Netherlands / 6,NED,UEFA,88
+220,297,Pafos FC,Cyprus / 4,CYP,UEFA,88
+223,224,Linfield FC,Northern Ireland / 4,NIR,UEFA,87,5
+224,211,FC Nasaf,Uzbekistan / 2,UZB,AFC,87,25
+225,215,Everton FC,England / 7,ENG,UEFA,87
+225,234,Egnatia Rrogozhinë,Albania / 3,ALB,UEFA,87
+225,244,SV Werder Bremen,Germany / 7,GER,UEFA,87
+228,192,Valencia CF,Spain / 7,ESP,UEFA,86
+228,211,CA Osasuna,Spain / 7,ESP,UEFA,86
+228,266,Moreirense FC,Portugal / 6,POR,UEFA,86
+228,270,Pyunik FC,Armenia / 3,ARM,UEFA,86
+232,198,FAR Rabat,Morocco / 4,MAR,CAF,85,5
+232,204,CD La Equidad,Colombia / 6,COL,CONMEBOL,85,5
+234,263,CA Huracán,Argentina / 6,ARG,CONMEBOL,85,5
+235,182,Urawa Reds Diamonds,Japan / 4,JPN,AFC,85,25
+236,226,SAD América de Cali,Colombia / 6,COL,CONMEBOL,85
+236,266,Udinese Calcio,Italy / 7,ITA,UEFA,85
+236,422,IF Elfsborg,Sweden / 3,SWE,UEFA,85
+239,247,Abdish-Ata,Kyrgyzstan / 1,KGZ,AFC,84,5
+240,192,Incheon United FC,Korea Republic / 4,KOR,AFC,84
+240,195,ASEC Mimosas,Côte d'Ivoire / 2,CIV,CAF,84
+240,232,Alianza Petrolera,Colombia / 6,COL,CONMEBOL,84
+240,196,Club Olimpia,Paraguay / 5,PAR,CONMEBOL,84
+240,226,AC Monza,Italy / 7,ITA,UEFA,84
+240,208,Stade Brestois 29,France / 6,FRA,UEFA,84
+240,236,TSG 1899 Hoffenheim,Germany / 7,GER,UEFA,84
+247,221,APOEL FC,Cyprus / 4,CYP,UEFA,83,25
+248,320,Malmö FF,Sweden / 3,SWE,UEFA,83
+249,219,Liverpool FC Montevideo,Uruguay / 4,URU,CONMEBOL,82,75
+250,222,Aris Thessaloniki FC,Greece / 5,GRE,UEFA,82,5
+250,263,KV Mechelen,Belgium / 6,BEL,UEFA,82,5
+250,275,Universitatea Cluj,Romania / 5,ROU,UEFA,82,5
+250,275,Universitatea Craiova CS,Romania / 5,ROU,UEFA,82,5
+254,253,FK Navbahor,Uzbekistan / 2,UZB,AFC,82,25
+255,211,FK Partizan Belgrade,Serbia / 4,SRB,UEFA,81,5
+256,308,Diriangén FC,Nicaragua / 2,NCA,CONCACAF,81
+256,247,Rayo Vallecano,Spain / 7,ESP,UEFA,81
+256,415,FK Mladá Boleslav,Czech Republic / 5,CZE,UEFA,81
+259,289,CA Independiente,Argentina / 6,ARG,CONMEBOL,80,5
+259,262,Cliftonville FC,Northern Ireland / 4,NIR,UEFA,80,5
+259,283,Larne FC,Northern Ireland / 4,NIR,UEFA,80,5
+259,333,Brann,Norway / 4,NOR,UEFA,80,5
+263,364,Los Angeles FC,USA / 2,USA,CONCACAF,80,25
+264,236,Hellas Verona FC,Italy / 7,ITA,UEFA,80
+264,203,FK Partizani Tirana,Albania / 3,ALB,UEFA,80
+264,306,Ararat-Armenia FC,Armenia / 3,ARM,UEFA,80
+267,253,Wydad AC Casablanca,Morocco / 4,MAR,CAF,79,75
+267,231,Defensor SC,Uruguay / 4,URU,CONMEBOL,79,75
+269,255,Sportivo Luqueño,Paraguay / 5,PAR,CONMEBOL,79,5
+269,244,Delfin SC,Ecuador / 5,ECU,CONMEBOL,79,5
+271,293,CA Unión Santa Fe,Argentina / 6,ARG,CONMEBOL,79
+271,258,Go Ahead Eagles,Netherlands / 6,NED,UEFA,79
+271,258,Getafe CF,Spain / 7,ESP,UEFA,79
+271,285,FSV Mainz 05,Germany / 7,GER,UEFA,79
+271,281,FC Dinamo Minsk,Belarus / 3,BLR,UEFA,79
+271,338,Empoli FC,Italy / 7,ITA,UEFA,79
+277,373,CD Olimpia,Honduras / 2,HON,CONCACAF,78,75
+278,263,Al Quwa Al Jawiya,Iraq / 2,IRQ,AFC,78,5
+278,258,Coquimbo Unido,Chile / 4,CHI,CONMEBOL,78,5
+278,247,Club Guaraní,Paraguay / 5,PAR,CONMEBOL,78,5
+278,316,Club Atlético Tucumán,Argentina / 6,ARG,CONMEBOL,78,5
+282,224,Stade Malien Bamako,Mali / 2,MLI,CAF,78,25
+282,232,Dreams,Ghana / 2,GHA,CAF,78,25
+284,236,OGC Nice,France / 6,FRA,UEFA,78
+284,258,Wolverhampton Wanderers FC,England / 7,ENG,UEFA,78
+284,274,FC Union Berlin,Germany / 7,GER,UEFA,78
+287,333,MC Alger,Algeria / 3,ALG,CAF,77,5
+287,247,Riga FC,Latvia / 3,LVA,UEFA,77,5
+289,201,Aris FC,Cyprus / 4,CYP,UEFA,77,25
+290,294,Cagliari Calcio,Italy / 7,ITA,UEFA,77
+290,385,MFK Ružomberok,Slovakia / 3,SVK,UEFA,77
+292,246,Sepahan SC,Iran / 2,IRN,AFC,76,75
+293,270,Simba SC,Tanzania / 2,TAN,CAF,76,5
+293,247,SSA Jagiellonia Białystok,Poland / 4,POL,UEFA,76,5
+293,375,FC Baník Ostrava,Czech Republic / 5,CZE,UEFA,76,5
+296,312,FK Radnički Kragujevac,Serbia / 4,SRB,UEFA,76,25
+296,360,FK Botev Plovdiv,Bulgaria / 4,BUL,UEFA,76,25
+298,270,Deportivo Toluca FC,Mexico / 4,MEX,CONCACAF,76
+299,344,CS Petrocub,Moldova / 2,MDA,UEFA,75,25
+300,480,ZED,Egypt / 5,EGY,CAF,75
+300,292,FK Vojvodina Novi Sad,Serbia / 4,SRB,UEFA,75
+302,288,Rivers United FC,Nigeria / 2,NGA,CAF,74,75
+303,338,Kilmarnock,Scotland / 5,SCO,UEFA,74,5
+304,316,CA Platense,Argentina / 6,ARG,CONMEBOL,74
+304,294,FC Augsburg,Germany / 7,GER,UEFA,74
+304,312,Borussia VFL Möenchengladbach,Germany / 7,GER,UEFA,74
+304,291,US Lecce,Italy / 7,ITA,UEFA,74
+304,297,UD Las Palmas,Spain / 7,ESP,UEFA,74
+304,346,Nottigham Forest FC,England / 7,ENG,UEFA,74
+304,356,Paide Linnameeskond,Estonia / 3,EST,UEFA,74
+311,325,Instituto AC,Argentina / 6,ARG,CONMEBOL,73,5
+311,283,Alanyaspor K,Turkey / 6,TUR,UEFA,73,5
+311,302,Kasımpaşa SK,Turkey / 6,TUR,UEFA,73,5
+314,462,CD Motagua,Honduras / 2,HON,CONCACAF,73
+314,396,OH Leuven,Belgium / 6,BEL,UEFA,73
+316,351,Philadelphia Union,USA / 2,USA,CONCACAF,72,25
+317,445,Al Masry,Egypt / 5,EGY,CAF,72
+317,255,Heart of Midlothian FC,Scotland / 5,SCO,UEFA,72
+317,297,Sivasspor K,Turkey / 6,TUR,UEFA,72
+317,297,Fortuna Sittard,Netherlands / 6,NED,UEFA,72
+317,333,Brøndby IF,Denmark / 5,DEN,UEFA,72
+322,247,FK TSC Bačka Topola,Serbia / 4,SRB,UEFA,71,75
+323,242,FC Spartak Trnava,Slovakia / 3,SVK,UEFA,71,5
+323,409,Silkeborg IF,Denmark / 5,DEN,UEFA,71,5
+325,531,CSD Comunicaciones,Guatemala / 2,GUA,CONCACAF,71,25
+325,323,Cincinnati,USA / 2,USA,CONCACAF,71,25
+327,346,Sanfrecce Hiroshima,Japan / 4,JPN,AFC,71
+327,391,GD Sagrada Esperança,Angola / 2,ANG,CAF,71
+327,342,Cruz Azul FC,Mexico / 4,MEX,CONCACAF,71
+327,450,Djurgårdens IF,Sweden / 3,SWE,UEFA,71
+327,451,St Patrick's Athletic FC,Republic of Ireland / 3,IRL,UEFA,71
+327,489,FC St. Gallen 1879,Switzerland / 4,SUI,UEFA,71
+333,351,Orlando City SC,USA / 2,USA,CONCACAF,70,75
+333,305,Al Sadd SC,Qatar / 2,QAT,AFC,70,25
+335,368,FC Famalicão,Portugal / 6,POR,UEFA,70
+335,409,The New Saints FC,Wales / 2,WAL,UEFA,70
+337,428,Cavalier,Jamaica / 2,JAM,CONCACAF,69,25
+338,308,Maccabi Petah Tikva FC,Israel / 5,ISR,UEFA,69
+338,285,FK Austria Vienna,Austria / 5,AUT,UEFA,69
+338,320,Víkingur Gøta,Faroe Islands / 3,FRO,UEFA,69
+338,368,FK Auda,Latvia / 3,LVA,UEFA,69
+338,356,Brentford FC,England / 7,ENG,UEFA,69
+338,308,NK Osijek,Croatia / 5,CRO,UEFA,69
+344,380,CA Barracas Central,Argentina / 6,ARG,CONMEBOL,68,5
+345,375,CA Banfield,Argentina / 6,ARG,CONMEBOL,68
+345,344,FC Neman Grodno,Belarus / 3,BLR,UEFA,68
+345,325,Sparta Rotterdam,Netherlands / 6,NED,UEFA,68
+348,360,Pumas UNAM,Mexico / 4,MEX,CONCACAF,67,75
+349,346,Deportivo Cali,Colombia / 6,COL,CONMEBOL,67
+349,320,VFL Bochum 1848,Germany / 7,GER,UEFA,67
+349,325,FK Zalgiris,Lithuania / 3,LTU,UEFA,67
+349,275,LASK Linz,Austria / 5,AUT,UEFA,67
+349,622,Puskas Ferenc FC,Hungary / 3,HUN,UEFA,67
+354,356,Aarhus GF,Denmark / 5,DEN,UEFA,66,5
+355,312,Vissel Kobe,Japan / 4,JPN,AFC,66,25
+356,346,NK Lokomotiva Zagreb,Croatia / 5,CRO,UEFA,66
+356,325,FC Dinamo Batumi,Georgia / 3,GEO,UEFA,66
+356,342,Sint-Truiden VV,Belgium / 6,BEL,UEFA,66
+356,375,KF Drita,Kosovo / 3,KVX,UEFA,66
+356,325,VFL Wolfsburg,Germany / 7,GER,UEFA,66
+361,356,Jwaneng Galaxy FC,Botswana / 2,BOT,CAF,65,5
+361,338,CS Emelec,Ecuador / 5,ECU,CONMEBOL,65,5
+361,445,Gimnasia La Plata,Argentina / 6,ARG,CONMEBOL,65,5
+364,318,Persepolis FC,Iran / 2,IRN,AFC,65,25
+365,325,Ankaragücü SK,Turkey / 6,TUR,UEFA,65
+365,422,Shamrock Rovers FC,Republic of Ireland / 3,IRL,UEFA,65
+367,382,New England,USA / 2,USA,CONCACAF,64,75
+367,242,KS Rakow Czestochowa,Poland / 4,POL,UEFA,64,75
+369,333,Al Nahda,Oman / 1,OMA,AFC,64,5
+369,368,Sporting Cristal,Peru / 4,PER,CONMEBOL,64,5
+369,388,FC Rapid,Romania / 5,ROU,UEFA,64,5
+369,415,AFC Hermannstadt,Romania / 5,ROU,UEFA,64,5
+369,454,Westerlo,Belgium / 6,BEL,UEFA,64,5
+374,364,Macarthur,Australia / 2,AUS,AFC,64,25
+374,364,Al Zawra'a SC,Iraq / 2,IRQ,AFC,64,25
+376,791,CD Águila,El Salvador / 1,SLV,CONCACAF,64
+376,380,Rizespor K,Turkey / 6,TUR,UEFA,64
+376,385,FC Urartu,Armenia / 3,ARM,UEFA,64
+379,307,Houston Dynamo,USA / 2,USA,CONCACAF,63,75
+379,351,Deportivo Garcilaso,Peru / 4,PER,CONMEBOL,63,75
+381,302,Newell's Old Boys,Argentina / 6,ARG,CONMEBOL,63,5
+381,375,Apollon Limassol,Cyprus / 4,CYP,UEFA,63,5
+383,211,Club Internacional Miami,USA / 2,USA,CONCACAF,63,25
+383,337,MKS Pogon Szczecin,Poland / 4,POL,UEFA,63,25
+385,545,EC Juventude,Brazil / 7,BRA,CONMEBOL,63
+385,545,Criciúma EC,Brazil / 7,BRA,CONMEBOL,63
+385,338,Frosinone,Italy / 7,ITA,UEFA,63
+385,275,FCV Farul Constanţa,Romania / 5,ROU,UEFA,63
+385,346,FC Zorya Luhansk,Ukraine / 5,UKR,UEFA,63
+385,396,NK Maribor,Slovenia / 3,SVN,UEFA,63
+385,431,FC Flora,Estonia / 3,EST,UEFA,63
+392,399,Auckland City FC,New Zealand / 1,NZL,OFC,62,75
+393,391,FK Cukaricki,Serbia / 4,SRB,UEFA,62,5
+393,445,HB Tórshavn,Faroe Islands / 3,FRO,UEFA,62,5
+395,391,CA Nacional Potosí,Bolivia / 2,BOL,CONMEBOL,62
+395,325,Cadiz CF,Spain / 7,ESP,UEFA,62
+395,325,Stade Reims,France / 6,FRA,UEFA,62
+395,308,FC Arouca,Portugal / 6,POR,UEFA,62
+395,368,RC Strasbourg,France / 6,FRA,UEFA,62
+395,409,Shelbourne,Republic of Ireland / 3,IRL,UEFA,62
+395,451,Standard Liège,Belgium / 6,BEL,UEFA,62
+395,520,Helsinki JK,Finland / 2,FIN,UEFA,62
+403,700,Víkingur Reykjavík,Iceland / 2,ISL,UEFA,61,75
+404,425,Gaziantep FK,Turkey / 6,TUR,UEFA,61,5
+404,388,UTA Arad,Romania / 5,ROU,UEFA,61,5
+404,436,Sporting Charleroi,Belgium / 6,BEL,UEFA,61,5
+407,435,Red Arrows FC,Zambia / 2,ZAM,CAF,61,25
+407,364,AEK Larnaca,Cyprus / 4,CYP,UEFA,61,25
+409,391,Al Kahrabaa,Iraq / 2,IRQ,AFC,61
+409,454,Kuwait SC,Kuwait / 2,KUW,AFC,61
+409,355,Fatih Karagümrük SK,Turkey / 6,TUR,UEFA,61
+409,415,Samsunspor K,Turkey / 6,TUR,UEFA,61
+409,409,FK Zenit,Russia / 3,RUS,UEFA,61
+414,406,Buriram United FC,Thailand / 2,THA,AFC,60,75
+414,415,FBC Melgar,Peru / 4,PER,CONMEBOL,60,75
+416,401,PFK Cherno more,Bulgaria / 4,BUL,UEFA,60,5
+417,462,Guanacasteca,Costa Rica / 3,CRC,CONCACAF,60
+417,388,Hapoel Haifa FC,Israel / 5,ISR,UEFA,60
+417,285,Sepsi OSK,Romania / 5,ROU,UEFA,60
+417,368,Montpellier HSC,France / 6,FRA,UEFA,60
+417,401,Rio Ave FC,Portugal / 6,POR,UEFA,60
+417,462,St. Mirren FC,Scotland / 5,SCO,UEFA,60
+423,401,Crusaders FC,Northern Ireland / 4,NIR,UEFA,59,75
+423,520,CSKA 1948 Sofia,Bulgaria / 4,BUL,UEFA,59,75
+425,436,FC Seoul,Korea Republic / 4,KOR,AFC,59,5
+425,451,Polissya,Ukraine / 5,UKR,UEFA,59,5
+427,428,Altyn Asyr FK,Turkmenistan / 2,TKM,AFC,59,25
+428,441,Antalyaspor K,Turkey / 6,TUR,UEFA,59
+428,428,FC Zürich,Switzerland / 4,SUI,UEFA,59
+428,382,Sabah,Azerbaijan / 4,AZE,UEFA,59
+428,530,WKS Slask Wroclaw,Poland / 4,POL,UEFA,59
+432,406,Gangwon FC,Korea Republic / 4,KOR,AFC,58,75
+432,596,CD Marathón,Honduras / 2,HON,CONCACAF,58,75
+434,520,Smouha SC,Egypt / 5,EGY,CAF,58,5
+434,401,FK Kryvbas KR,Ukraine / 5,UKR,UEFA,58,5
+436,312,Kashiwa Reysol,Japan / 4,JPN,AFC,58,25
+437,385,Al Fayha FC,Saudi Arabia / 4,KSA,AFC,58
+437,583,Deportivo Antigua GFC,Guatemala / 2,GUA,CONCACAF,58
+437,436,CDU César Vallejo,Peru / 4,PER,CONMEBOL,58
+437,422,FC Cologne,Germany / 7,GER,UEFA,58
+441,362,PFC Levski Sofia,Bulgaria / 4,BUL,UEFA,57,75
+442,505,FC Iberia 1999 ( FC Saburtalo ),Georgia / 3,GEO,UEFA,57,5
+443,401,SD Aucas,Ecuador / 5,ECU,CONMEBOL,57
+443,431,US Sassuolo Calcio,Italy / 7,ITA,UEFA,57
+443,431,Konyaspor K,Turkey / 6,TUR,UEFA,57
+443,480,FK Jablonec,Czech Republic / 5,CZE,UEFA,57
+443,362,FC Torpedo Kutaisi,Georgia / 3,GEO,UEFA,57
+443,545,FC Hegelmann Litauen,Lithuania / 3,LTU,UEFA,57
+449,374,Gwangju,Korea Republic / 4,KOR,AFC,56,75
+450,415,Club Africain,Tunisia / 3,TUN,CAF,56,5
+451,454,Glentoran FC,Northern Ireland / 4,NIR,UEFA,56,25
+452,583,Fortaleza CEIF,Colombia / 6,COL,CONMEBOL,56
+452,462,Almere City,Netherlands / 6,NED,UEFA,56
+452,462,Gil Vicente FC,Portugal / 6,POR,UEFA,56
+452,545,FC Nantes,France / 6,FRA,UEFA,56
+452,474,FK Kauno Zalgiris,Lithuania / 3,LTU,UEFA,56
+457,520,AD San Carlos,Costa Rica / 3,CRC,CONCACAF,55,5
+457,302,Adana Demir SK,Turkey / 6,TUR,UEFA,55,5
+457,445,FC Hradec Králové,Czech Republic / 5,CZE,UEFA,55,5
+460,684,Seattle Sounders,USA / 2,USA,CONCACAF,55,25
+461,395,Derry City FC,Republic of Ireland / 3,IRL,UEFA,55
+461,531,NK Bravo,Slovenia / 3,SVN,UEFA,55
+461,700,Lincoln Red Imps FC,Gibraltar / 1,GIB,UEFA,55
+464,651,FK Astana,Kazakhstan / 2,KAZ,UEFA,54,75
+465,425,Al Ahed,Lebanon / 1,LIB,AFC,54,5
+465,406,Kashima Antlers,Japan / 4,JPN,AFC,54,5
+465,497,Al Arabi,Kuwait / 2,KUW,AFC,54,5
+465,577,CS Constantine,Algeria / 3,ALG,CAF,54,5
+465,474,FC Vorskla Poltava,Ukraine / 5,UKR,UEFA,54,5
+470,471,FC Nouadhibou,Mauritania / 1,MTN,CAF,54,25
+470,441,Azam FC,Tanzania / 2,TAN,CAF,54,25
+470,421,CSKA Sofia,Bulgaria / 4,BUL,UEFA,54,25
+473,545,Ceramica Cleopatra FC,Egypt / 5,EGY,CAF,54
+473,651,CSD Municipal,Guatemala / 2,GUA,CONCACAF,54
+473,545,General Caballero JLM,Paraguay / 5,PAR,CONMEBOL,54
+473,441,Casa Pia AC,Portugal / 6,POR,UEFA,54
+473,480,Bnei Sakhnin FC,Israel / 5,ISR,UEFA,54
+473,520,Politehnica Iași,Romania / 5,ROU,UEFA,54
+473,520,Maccabi Bnei Raina FC,Israel / 5,ISR,UEFA,54
+473,480,FC Rukh Vynnyky,Ukraine / 5,UKR,UEFA,54
+473,409,FC Struga,North Macedonia / 3,MKD,UEFA,54
+482,505,AS Maniema Union,Congo DR / 2,COD,CAF,53,5
+482,425,Kayserispor K,Turkey / 6,TUR,UEFA,53,5
+482,431,Neftchi Baku,Azerbaijan / 4,AZE,UEFA,53,5
+485,460,Albirex Niigata,Japan / 4,JPN,AFC,53,25
+485,505,FK Pakhtakor,Uzbekistan / 2,UZB,AFC,53,25
+487,441,Deportivo Pasto,Colombia / 6,COL,CONMEBOL,53
+487,489,KS Vllaznia Shkodër,Albania / 3,ALB,UEFA,53
+487,474,FC Prishtina,Kosovo / 3,KVX,UEFA,53
+490,375,Avispa Fukuoka,Japan / 4,JPN,AFC,52,75
+490,454,AD Tarma,Peru / 4,PER,CONMEBOL,52,75
+490,478,SP La Fiorita,San Marino / 2,SMR,UEFA,52,75
+493,396,Sharjah FC,United Arab Emirates / 2,UAE,AFC,52,5
+493,603,El Geish,Egypt / 5,EGY,CAF,52,5
+493,472,CS Cartaginés,Costa Rica / 3,CRC,CONCACAF,52,5
+493,573,Managua FC,Nicaragua / 2,NCA,CONCACAF,52,5
+493,603,Club Necaxa,Mexico / 4,MEX,CONCACAF,52,5
+493,351,SK Dnipro-1,Ukraine / 5,UKR,UEFA,52,5
+493,480,UE Santa Coloma,Andorra / 2,AND,UEFA,52,5
+493,436,Hatayspor K,Turkey / 6,TUR,UEFA,52,5
+493,382,Hibernian FC,Scotland / 5,SCO,UEFA,52,5
+493,445,Petrolul 52,Romania / 5,ROU,UEFA,52,5
