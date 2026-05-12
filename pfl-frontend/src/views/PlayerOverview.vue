@@ -1,5 +1,5 @@
 <template>
-  <div class="player-profile">
+  <div class="player-dashboard">
     <!-- Loading -->
     <div v-if="loading" class="loading-container">
       <div class="spinner"></div>
@@ -14,145 +14,208 @@
     </div>
 
     <!-- Player loaded -->
-    <div v-else-if="player" class="profile-layout">
-      <!-- Back link -->
+    <div v-else-if="player" class="dashboard-layout">
       <router-link to="/players" class="back-link">← Back to Players</router-link>
 
-      <!-- Full-width header section -->
-      <div class="header-row">
-        <div class="photo-area">
-          <img
-            :src="playerPhoto"
-            :alt="player.name"
-            @error="handleImageError"
-            class="player-img"
-          />
-        </div>
-
-        <div class="identity-area">
-          <div class="name-ovr-row">
-            <h1 class="player-name">{{ player.name }}</h1>
+      <!-- ===== TOP HEADER BAR ===== -->
+      <div class="top-bar">
+        <div class="top-left">
+          <div class="photo-area">
+            <img
+              :src="playerPhoto"
+              :alt="player.name"
+              @error="handleImageError"
+              class="player-img"
+            />
             <div class="ovr-badge">{{ player.overall_stats }}</div>
           </div>
-
-          <div v-if="player.market_value" class="market-badge">
-            MARKET VALUE {{ formatCurrency(player.market_value) }}
-          </div>
-
-          <div class="bio-grid">
-            <div class="bio-item">
-              <span class="label">Age</span>
-              <span class="value">{{ player.age }}</span>
+          <div class="identity-info">
+            <h1 class="player-name">{{ player.name }}</h1>
+            <div class="identity-details">
+              <span>{{ player.country_name || player.country }}</span>
+              <span class="sep">•</span>
+              <span>Age {{ player.age }}</span>
+              <span class="sep">•</span>
+              <span>{{ player.club_name || 'Free Agent' }}</span>
             </div>
-            <div class="bio-item">
-              <span class="label">Nationality</span>
-              <span class="value">{{ player.country_name || player.country }}</span>
-            </div>
-            <div class="bio-item">
-              <span class="label">Club</span>
-              <span class="value">{{ player.club_name || 'Free Agent' }}</span>
-            </div>
-            <div class="bio-item">
-              <span class="label">Height</span>
-              <span class="value">{{ player.height }} cm</span>
-            </div>
-            <div class="bio-item">
-              <span class="label">Weight</span>
-              <span class="value">{{ player.weight }} kg</span>
-            </div>
-            <div class="bio-item">
-              <span class="label">Foot</span>
-              <span class="value">{{ player.foot?.toUpperCase() }}</span>
-            </div>
-          </div>
-
-          <div v-if="playerPositions.length" class="positions-area">
-            <span class="positions-label">Positions</span>
-            <div class="positions-list">
+            <!-- Positions inline -->
+            <div class="positions-inline" v-if="playerPositions.length">
               <span
                 v-for="(pos, idx) in playerPositions"
                 :key="idx"
-                class="position-chip"
+                class="pos-chip"
                 :class="pos.type"
               >{{ pos.abbr }}</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Full-width attributes grid -->
-      <div class="attributes-grid">
-        <div class="attr-column" v-if="attackingAttrs.length">
-          <h2 class="col-title">Technical</h2>
-          <ul class="attr-list">
-            <li v-for="attr in attackingAttrs" :key="attr.key" class="attr-row">
-              <span class="attr-label">{{ attr.label }}</span>
-              <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
-                {{ attr.value }}
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="attr-column" v-if="physicalAttrs.length || miscAttrs.length">
-          <h2 class="col-title">Physical</h2>
-          <ul class="attr-list" v-if="physicalAttrs.length">
-            <li v-for="attr in physicalAttrs" :key="attr.key" class="attr-row">
-              <span class="attr-label">{{ attr.label }}</span>
-              <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
-                {{ attr.value }}
-              </span>
-            </li>
-          </ul>
-          <div v-if="miscAttrs.length" class="sub-block">
-            <h2 class="col-title">Mental</h2>
-            <ul class="attr-list">
-              <li v-for="attr in miscAttrs" :key="attr.key" class="attr-row">
-                <span class="attr-label">{{ attr.label }}</span>
-                <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
-                  {{ attr.value }}
-                </span>
-              </li>
-            </ul>
+        <div class="top-center">
+          <div class="contract-box">
+            <div class="contract-item">
+              <span class="clabel">Market Value</span>
+              <span class="cvalue">{{ formatCurrency(player.market_value) }}</span>
+            </div>
+            <div class="contract-item">
+              <span class="clabel">Wage</span>
+              <span class="cvalue">{{ formatCurrency(player.wage) }}/w</span>
+            </div>
+            <div class="contract-item">
+              <span class="clabel">Foot</span>
+              <span class="cvalue">{{ player.foot?.toUpperCase() || '—' }}</span>
+            </div>
+            <div class="contract-item">
+              <span class="clabel">Height</span>
+              <span class="cvalue">{{ player.height }} cm</span>
+            </div>
+            <div class="contract-item">
+              <span class="clabel">Weight</span>
+              <span class="cvalue">{{ player.weight }} kg</span>
+            </div>
           </div>
         </div>
 
-        <div class="attr-column" v-if="defensiveAttrs.length || gkAttrs.length">
-          <h2 class="col-title">Defensive</h2>
-          <ul class="attr-list" v-if="defensiveAttrs.length">
-            <li v-for="attr in defensiveAttrs" :key="attr.key" class="attr-row">
-              <span class="attr-label">{{ attr.label }}</span>
-              <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
-                {{ attr.value }}
-              </span>
-            </li>
-          </ul>
-          <div v-if="gkAttrs.length" class="sub-block">
-            <h2 class="col-title">Goalkeeping</h2>
-            <ul class="attr-list">
-              <li v-for="attr in gkAttrs" :key="attr.key" class="attr-row">
-                <span class="attr-label">{{ attr.label }}</span>
-                <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
-                  {{ attr.value }}
-                </span>
-              </li>
-            </ul>
+        <div class="top-right">
+          <div class="bio-specs">
+            <div class="spec-item">
+              <span class="slabel">Form</span>
+              <span class="svalue" :style="{ color: getAttrColor(player.form) }">{{ player.form }}</span>
+            </div>
+            <div class="spec-item">
+              <span class="slabel">Injury Resistance</span>
+              <span class="svalue" :style="{ color: getAttrColor(player.injury_resistance) }">{{ player.injury_resistance }}</span>
+            </div>
+            <div class="spec-item">
+              <span class="slabel">Weak Foot Usage</span>
+              <span class="svalue">{{ player.weak_foot_usage }}</span>
+            </div>
+            <div class="spec-item">
+              <span class="slabel">Weak Foot Acc.</span>
+              <span class="svalue">{{ player.weak_foot_accuracy }}</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Traits -->
-      <div v-if="activeSkills.length" class="skills-section">
-        <h2 class="col-title">Traits</h2>
-        <div class="skills-container">
-          <span v-for="skill in activeSkills" :key="skill.key" class="skill-badge">
-            {{ skill.label }}
-          </span>
+      <!-- ===== MAIN DASHBOARD GRID ===== -->
+      <div class="dashboard-grid">
+        
+        <!-- COLUMN 1: Mini Pitch + Traits -->
+        <div class="grid-col col-positions">
+          <div class="mini-pitch">
+            <div class="pitch-zone zone-attack">
+              <span class="zone-label">ATT</span>
+              <div class="zone-badges">
+                <span
+                  v-for="pos in getPositionsByZone('attack')"
+                  :key="pos.abbr"
+                  class="pitch-badge"
+                  :class="pos.type"
+                >{{ pos.abbr }}</span>
+              </div>
+            </div>
+            <div class="pitch-zone zone-midfield">
+              <span class="zone-label">MID</span>
+              <div class="zone-badges">
+                <span
+                  v-for="pos in getPositionsByZone('midfield')"
+                  :key="pos.abbr"
+                  class="pitch-badge"
+                  :class="pos.type"
+                >{{ pos.abbr }}</span>
+              </div>
+            </div>
+            <div class="pitch-zone zone-defense">
+              <span class="zone-label">DEF</span>
+              <div class="zone-badges">
+                <span
+                  v-for="pos in getPositionsByZone('defense')"
+                  :key="pos.abbr"
+                  class="pitch-badge"
+                  :class="pos.type"
+                >{{ pos.abbr }}</span>
+              </div>
+            </div>
+            <div class="pitch-zone zone-gk" v-if="getPositionsByZone('gk').length">
+              <span class="zone-label">GK</span>
+              <div class="zone-badges">
+                <span
+                  v-for="pos in getPositionsByZone('gk')"
+                  :key="pos.abbr"
+                  class="pitch-badge"
+                  :class="pos.type"
+                >{{ pos.abbr }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="traits-block" v-if="activeSkills.length">
+            <h3 class="block-title">Traits</h3>
+            <div class="traits-list">
+              <span v-for="skill in activeSkills" :key="skill.key" class="trait-chip">
+                {{ skill.label }}
+              </span>
+            </div>
+          </div>
+          <div class="traits-block" v-else>
+            <h3 class="block-title">Traits</h3>
+            <p class="no-traits">No special traits</p>
+          </div>
         </div>
+
+        <!-- COLUMN 2: Technical -->
+        <div class="grid-col col-technical">
+          <h3 class="block-title">Technical</h3>
+          <div class="attr-list">
+            <div v-for="attr in attackingAttrs" :key="attr.key" class="attr-row">
+              <span class="attr-label">{{ attr.label }}</span>
+              <span class="attr-value" :class="getValueClass(attr.value)">{{ attr.value }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMN 3: Mental + Defensive -->
+        <div class="grid-col col-mental-defensive">
+          <h3 class="block-title">Mental</h3>
+          <div class="attr-list">
+            <div v-for="attr in miscAttrs" :key="attr.key" class="attr-row">
+              <span class="attr-label">{{ attr.label }}</span>
+              <span class="attr-value" :class="getValueClass(attr.value)">{{ attr.value }}</span>
+            </div>
+          </div>
+          <h3 class="block-title sub-title">Defensive</h3>
+          <div class="attr-list">
+            <div v-for="attr in defensiveAttrs" :key="attr.key" class="attr-row">
+              <span class="attr-label">{{ attr.label }}</span>
+              <span class="attr-value" :class="getValueClass(attr.value)">{{ attr.value }}</span>
+            </div>
+          </div>
+          <div v-if="gkAttrs.length && hasGKValues" class="sub-title-section">
+            <h3 class="block-title sub-title">Goalkeeping</h3>
+            <div class="attr-list">
+              <div v-for="attr in gkAttrs" :key="attr.key" class="attr-row">
+                <span class="attr-label">{{ attr.label }}</span>
+                <span class="attr-value" :class="getValueClass(attr.value)">{{ attr.value }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUMN 4: Physical -->
+        <div class="grid-col col-physical">
+          <h3 class="block-title">Physical</h3>
+          <div class="attr-list">
+            <div v-for="attr in physicalAttrs" :key="attr.key" class="attr-row">
+              <span class="attr-label">{{ attr.label }}</span>
+              <span class="attr-value" :class="getValueClass(attr.value)">{{ attr.value }}</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Footer -->
-      <div class="footer">
+      <div class="dashboard-footer">
         <p class="copyright">© 2025 Pirate Football League</p>
         <p class="social-links">
           <a href="#">Twitter</a>
@@ -221,90 +284,107 @@ function formatCurrency(value) {
 }
 
 function getAttrColor(value) {
+  if (value == null) return '#9ca3af';
   if (value >= 80) return '#4ade80';
   if (value >= 70) return '#facc15';
   return '#f87171';
 }
 
+function getValueClass(value) {
+  if (value == null) return 'val-none';
+  if (value >= 80) return 'val-high';
+  if (value >= 70) return 'val-mid';
+  return 'val-low';
+}
+
 const attackingAttrs = computed(() => {
   if (!player.value) return [];
-  return [
-    { key: 'offensive_awareness', label: 'Off. Awareness', value: player.value.offensive_awareness },
-    { key: 'ball_control', label: 'Ball Control', value: player.value.ball_control },
-    { key: 'dribbling', label: 'Dribbling', value: player.value.dribbling },
-    { key: 'tight_possession', label: 'Tight Possession', value: player.value.tight_possession },
-    { key: 'low_pass', label: 'Low Pass', value: player.value.low_pass },
-    { key: 'lofted_pass', label: 'Lofted Pass', value: player.value.lofted_pass },
-    { key: 'finishing', label: 'Finishing', value: player.value.finishing },
-    { key: 'heading', label: 'Heading', value: player.value.heading },
-    { key: 'place_kicking', label: 'Place Kicking', value: player.value.place_kicking },
-    { key: 'curl', label: 'Curl', value: player.value.curl },
+  const keys = [
+    'offensive_awareness', 'ball_control', 'dribbling', 'tight_possession',
+    'low_pass', 'lofted_pass', 'finishing', 'heading', 'place_kicking', 'curl'
   ];
+  return keys.map(k => ({ key: k, label: formatLabel(k), value: player.value[k] }));
 });
 
 const physicalAttrs = computed(() => {
   if (!player.value) return [];
-  return [
-    { key: 'speed', label: 'Speed', value: player.value.speed },
-    { key: 'acceleration', label: 'Acceleration', value: player.value.acceleration },
-    { key: 'kicking_power', label: 'Kicking Power', value: player.value.kicking_power },
-    { key: 'jump', label: 'Jump', value: player.value.jump },
-    { key: 'physical_contact', label: 'Physical Contact', value: player.value.physical_contact },
-    { key: 'balance', label: 'Balance', value: player.value.balance },
-    { key: 'stamina', label: 'Stamina', value: player.value.stamina },
-  ];
+  const keys = ['speed', 'acceleration', 'kicking_power', 'jump', 'physical_contact', 'balance', 'stamina'];
+  return keys.map(k => ({ key: k, label: formatLabel(k), value: player.value[k] }));
 });
 
 const defensiveAttrs = computed(() => {
   if (!player.value) return [];
-  return [
-    { key: 'defensive_awareness', label: 'Def. Awareness', value: player.value.defensive_awareness },
-    { key: 'ball_winning', label: 'Ball Winning', value: player.value.ball_winning },
-    { key: 'aggression', label: 'Aggression', value: player.value.aggression },
-  ];
+  const keys = ['defensive_awareness', 'ball_winning', 'aggression'];
+  return keys.map(k => ({ key: k, label: formatLabel(k), value: player.value[k] }));
 });
 
 const gkAttrs = computed(() => {
   if (!player.value) return [];
-  return [
-    { key: 'gk_awareness', label: 'GK Awareness', value: player.value.gk_awareness },
-    { key: 'gk_catching', label: 'GK Catching', value: player.value.gk_catching },
-    { key: 'gk_clearing', label: 'GK Clearing', value: player.value.gk_clearing },
-    { key: 'gk_reflexes', label: 'GK Reflexes', value: player.value.gk_reflexes },
-    { key: 'gk_reach', label: 'GK Reach', value: player.value.gk_reach },
-  ];
+  const keys = ['gk_awareness', 'gk_catching', 'gk_clearing', 'gk_reflexes', 'gk_reach'];
+  return keys.map(k => ({ key: k, label: formatLabel(k), value: player.value[k] }));
 });
 
 const miscAttrs = computed(() => {
   if (!player.value) return [];
-  return [
-    { key: 'weak_foot_usage', label: 'Weak Foot Usage', value: player.value.weak_foot_usage },
-    { key: 'weak_foot_accuracy', label: 'Weak Foot Acc.', value: player.value.weak_foot_accuracy },
-    { key: 'form', label: 'Form', value: player.value.form },
-    { key: 'injury_resistance', label: 'Injury Resistance', value: player.value.injury_resistance },
-  ];
+  const keys = ['weak_foot_usage', 'weak_foot_accuracy', 'form', 'injury_resistance'];
+  return keys.map(k => ({ key: k, label: formatLabel(k), value: player.value[k] }));
 });
+
+const hasGKValues = computed(() => {
+  if (!player.value) return false;
+  return gkAttrs.value.some(a => a.value > 1);
+});
+
+function formatLabel(key) {
+  const labels = {
+    offensive_awareness: 'Off. Awareness', ball_control: 'Ball Control',
+    dribbling: 'Dribbling', tight_possession: 'Tight Possession',
+    low_pass: 'Low Pass', lofted_pass: 'Lofted Pass',
+    finishing: 'Finishing', heading: 'Heading',
+    place_kicking: 'Place Kicking', curl: 'Curl',
+    speed: 'Speed', acceleration: 'Acceleration',
+    kicking_power: 'Kicking Power', jump: 'Jump',
+    physical_contact: 'Physical Contact', balance: 'Balance', stamina: 'Stamina',
+    defensive_awareness: 'Def. Awareness', ball_winning: 'Ball Winning', aggression: 'Aggression',
+    gk_awareness: 'GK Awareness', gk_catching: 'GK Catching',
+    gk_clearing: 'GK Clearing', gk_reflexes: 'GK Reflexes', gk_reach: 'GK Reach',
+    weak_foot_usage: 'Weak Foot Usage', weak_foot_accuracy: 'Weak Foot Acc.',
+    form: 'Form', injury_resistance: 'Injury Resistance',
+  };
+  return labels[key] || key;
+}
 
 const playerPositions = computed(() => {
   if (!player.value) return [];
   const posMap = player.value.positions;
   if (!posMap) return [];
   const allPositions = [
-    { key: 'gk', abbr: 'GK' }, { key: 'cb', abbr: 'CB' },
-    { key: 'lb', abbr: 'LB' }, { key: 'rb', abbr: 'RB' },
-    { key: 'dmf', abbr: 'DMF' }, { key: 'cmf', abbr: 'CMF' },
-    { key: 'lmf', abbr: 'LMF' }, { key: 'rmf', abbr: 'RMF' },
-    { key: 'amf', abbr: 'AMF' }, { key: 'lwf', abbr: 'LWF' },
-    { key: 'rwf', abbr: 'RWF' }, { key: 'ss', abbr: 'SS' },
-    { key: 'cf', abbr: 'CF' },
+    { key: 'gk', abbr: 'GK', zone: 'gk' },
+    { key: 'cb', abbr: 'CB', zone: 'defense' },
+    { key: 'lb', abbr: 'LB', zone: 'defense' },
+    { key: 'rb', abbr: 'RB', zone: 'defense' },
+    { key: 'dmf', abbr: 'DMF', zone: 'midfield' },
+    { key: 'cmf', abbr: 'CMF', zone: 'midfield' },
+    { key: 'lmf', abbr: 'LMF', zone: 'midfield' },
+    { key: 'rmf', abbr: 'RMF', zone: 'midfield' },
+    { key: 'amf', abbr: 'AMF', zone: 'attack' },
+    { key: 'lwf', abbr: 'LWF', zone: 'attack' },
+    { key: 'rwf', abbr: 'RWF', zone: 'attack' },
+    { key: 'ss', abbr: 'SS', zone: 'attack' },
+    { key: 'cf', abbr: 'CF', zone: 'attack' },
   ];
   return allPositions
     .filter(pos => posMap[pos.key] !== undefined)
     .map(pos => ({
       abbr: pos.abbr,
       type: posMap[pos.key] ? 'natural' : 'experienced',
+      zone: pos.zone,
     }));
 });
+
+function getPositionsByZone(zone) {
+  return playerPositions.value.filter(p => p.zone === zone);
+}
 
 const activeSkills = computed(() => {
   if (!player.value) return [];
@@ -312,21 +392,29 @@ const activeSkills = computed(() => {
     { key: 'trickster', label: 'Trickster' },
     { key: 'gamesmanship', label: 'Gamesmanship' },
     { key: 'fighting_spirit', label: 'Fighting Spirit' },
+    { key: 'acrobatic_finishing', label: 'Acrobatic Finishing' },
+    { key: 'outside_curler', label: 'Outside Curler' },
+    { key: 'long_range_shots', label: 'Long Range Shots' },
+    { key: 'early_cross', label: 'Early Cross' },
+    { key: 'long_throw', label: 'Long Throw' },
+    { key: 'penalty_specialist', label: 'Penalty Specialist' },
+    { key: 'chip_shot_control', label: 'Chip Shot Control' },
   ];
   return skillFields.filter(s => player.value[s.key] === true);
 });
 </script>
 
 <style scoped>
-/* ===== Base & Layout ===== */
-.player-profile {
+/* ========== BASE ========== */
+.player-dashboard {
   min-height: 100vh;
-  background: #0f1115;
-  color: #e2e8f0;
+  background: #0d1117;
+  color: #c9d1d9;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
-  display: flex;
-  justify-content: center;
-  padding: 1rem 1.5rem 2rem;
+  font-size: 16px;
+  padding: 0 2rem 2rem;
+  box-sizing: border-box;
+  line-height: 1.5;
 }
 
 .loading-container,
@@ -336,15 +424,16 @@ const activeSkills = computed(() => {
   align-items: center;
   justify-content: center;
   height: 60vh;
+  font-size: 1.2rem;
 }
 
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid #2d3748;
+  border: 4px solid #21262d;
   border-top: 4px solid #fbbf24;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
   margin-bottom: 1rem;
 }
 
@@ -352,270 +441,460 @@ const activeSkills = computed(() => {
 
 .back-link {
   display: inline-block;
-  margin-bottom: 1rem;
-  color: #94a3b8;
+  margin: 1rem 0 0.75rem;
+  color: #8b949e;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color 0.2s;
 }
 .back-link:hover { color: #fbbf24; }
 
-/* ===== Main container ===== */
-.profile-layout {
+.dashboard-layout {
   width: 100%;
   max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 120px);
 }
 
-/* ===== Header Row ===== */
-.header-row {
+/* ========== TOP BAR ========== */
+.top-bar {
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  background: #1a1d24;
-  border-radius: 12px;
-  padding: 2rem;
+  align-items: stretch;
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1.4;
+  min-width: 300px;
 }
 
 .photo-area {
+  position: relative;
   flex-shrink: 0;
 }
+
 .player-img {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #fbbf24;
 }
 
-.identity-area {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-width: 0;
+.ovr-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -6px;
+  background: #d97706;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 14px;
+  border: 3px solid #161b22;
 }
 
-.name-ovr-row {
+.identity-info {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .player-name {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #fbbf24;
   margin: 0;
   line-height: 1.1;
 }
 
-.ovr-badge {
-  background: #d97706;
-  color: white;
-  padding: 0.3rem 1.5rem;
-  border-radius: 24px;
-  font-weight: 700;
-  font-size: 1.6rem;
-  flex-shrink: 0;
-}
-
-.market-badge {
-  background: #166534;
-  color: white;
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  font-weight: 600;
+.identity-details {
   font-size: 1rem;
-  align-self: flex-start;
-}
-
-/* Bio grid */
-.bio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem 1.5rem;
-  margin-top: 0.25rem;
-}
-.bio-item .label {
-  display: block;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #9ca3af;
-  letter-spacing: 0.3px;
-}
-.bio-item .value {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-/* Positions */
-.positions-area {
-  margin-top: 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.positions-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #9ca3af;
-  flex-shrink: 0;
-}
-.positions-list {
+  color: #8b949e;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  align-items: center;
 }
-.position-chip {
-  padding: 0.25rem 0.8rem;
+
+.sep {
+  color: #30363d;
+}
+
+.positions-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.pos-chip {
+  padding: 0.25rem 0.7rem;
   border-radius: 4px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
 }
-.position-chip.natural {
+
+.pos-chip.natural {
   background: #166534;
   color: #bbf7d0;
 }
-.position-chip.experienced {
+
+.pos-chip.experienced {
   background: #854d0e;
   color: #fef08a;
 }
 
-/* ===== Attributes Grid ===== */
-.attributes-grid {
+/* Center: Contract */
+.top-center {
+  flex: 0.9;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.contract-box {
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.contract-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #8b949e;
+  letter-spacing: 0.5px;
+}
+
+.cvalue {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #58a6ff;
+}
+
+/* Right: Bio specs */
+.top-right {
+  flex: 0.9;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.bio-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #8b949e;
+  letter-spacing: 0.5px;
+}
+
+.svalue {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ========== DASHBOARD GRID ========== */
+.dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: 220px 1fr 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  margin-bottom: 1.25rem;
 }
 
-.attr-column {
-  background: #1e222b;
-  border-radius: 10px;
-  padding: 1.25rem 1.5rem;
+.grid-col {
+  background: #161b22;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.sub-block {
-  margin-top: 1.5rem;
-}
-
-.col-title {
-  font-size: 1.1rem;
+.block-title {
+  font-size: 0.85rem;
   text-transform: uppercase;
   font-weight: 700;
-  color: white;
+  color: #e2e8f0;
   text-align: center;
-  border-bottom: 1px solid #2d3748;
+  margin: 0 0 0.6rem 0;
   padding-bottom: 0.5rem;
-  margin: 0 0 0.75rem 0;
+  border-bottom: 1px solid #21262d;
+  letter-spacing: 0.6px;
 }
 
+.sub-title {
+  margin-top: 1rem;
+}
+
+/* ===== Mini Pitch ===== */
+.mini-pitch {
+  background: linear-gradient(180deg, #1a5c1a 0%, #1f6e1f 50%, #1a5c1a 100%);
+  border-radius: 6px;
+  border: 1px solid #2d6b2d;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pitch-zone {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  position: relative;
+  min-height: 36px;
+}
+
+.zone-attack { background: rgba(255,255,255,0.06); }
+.zone-midfield { background: rgba(255,255,255,0.03); border-top: 1px dashed rgba(255,255,255,0.25); border-bottom: 1px dashed rgba(255,255,255,0.25); }
+.zone-defense { background: rgba(255,255,255,0.06); }
+.zone-gk { background: rgba(255,200,50,0.12); border-top: 1px solid rgba(255,200,50,0.4); }
+
+.zone-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  width: 26px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.zone-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pitch-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.pitch-badge.natural {
+  background: #166534;
+  color: #bbf7d0;
+}
+
+.pitch-badge.experienced {
+  background: #854d0e;
+  color: #fef08a;
+}
+
+/* Traits */
+.traits-block {
+  margin-top: 0.25rem;
+}
+
+.traits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.trait-chip {
+  background: #1f2a44;
+  color: #c7d2fe;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.no-traits {
+  font-size: 0.78rem;
+  color: #484f58;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ===== Attribute Lists ===== */
 .attr-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
 }
 
 .attr-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.35rem 0;
-  border-bottom: 1px solid #2d3340;
+  padding: 0.45rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.018);
 }
-.attr-row:last-child {
-  border-bottom: none;
+
+.attr-row:nth-child(even) {
+  background: rgba(255,255,255,0.035);
 }
 
 .attr-label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: #c9d1d9;
 }
 
 .attr-value {
   font-weight: 700;
-  font-size: 1rem;
-  min-width: 2rem;
-  text-align: right;
-}
-
-/* ===== Skills ===== */
-.skills-section {
-  margin-bottom: 1.5rem;
-}
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.skill-badge {
-  background: #1f2a44;
-  color: #c7d2fe;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
   font-size: 0.9rem;
+  min-width: 34px;
+  text-align: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
 }
 
-/* ===== Footer ===== */
-.footer {
+/* Value background colors */
+.val-high {
+  background: #166534;
+  color: #bbf7d0;
+}
+
+.val-mid {
+  background: #5c4a0e;
+  color: #fde68a;
+}
+
+.val-low {
+  background: #5c1a1a;
+  color: #fca5a5;
+}
+
+.val-none {
+  background: transparent;
+  color: #484f58;
+}
+
+/* ========== FOOTER ========== */
+.dashboard-footer {
   text-align: center;
-  border-top: 1px solid #2d3748;
+  border-top: 1px solid #21262d;
   padding-top: 1rem;
-  margin-top: 1.5rem;
+  flex-shrink: 0;
 }
+
 .copyright {
-  color: #6b7280;
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+  color: #484f58;
+  font-size: 0.75rem;
+  margin-bottom: 0.3rem;
 }
+
 .social-links a {
-  color: #60a5fa;
+  color: #58a6ff;
   margin: 0 0.5rem;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
+
 .social-links a:hover {
   color: #fbbf24;
 }
 
-/* ===== Mobile ===== */
-@media (max-width: 768px) {
-  .player-profile {
-    padding: 0.75rem;
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 200px 1fr 1fr;
   }
-  .header-row {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.25rem;
-  }
-  .name-ovr-row {
-    justify-content: center;
-  }
-  .player-name {
-    font-size: 2rem;
-  }
-  .bio-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .attributes-grid {
-    grid-template-columns: 1fr;
+  .col-physical {
+    grid-column: 2 / 4;
   }
 }
 
-/* ===== Large screens ===== */
-@media (min-width: 1600px) {
-  .profile-layout {
-    max-width: 1600px;
+@media (max-width: 900px) {
+  .player-dashboard {
+    font-size: 15px;
+    padding: 0 1rem 1.5rem;
   }
-  .attributes-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .col-positions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .mini-pitch {
+    flex: 1;
+    min-height: 150px;
+    flex-direction: row;
+  }
+  .pitch-zone {
+    flex-direction: column;
+    min-width: 50px;
+    align-items: center;
+  }
+  .zone-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+  .top-bar {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .col-positions {
+    flex-direction: column;
+  }
+  .player-img {
+    width: 100px;
+    height: 100px;
   }
   .player-name {
-    font-size: 3rem;
+    font-size: 1.5rem;
   }
 }
 </style>
