@@ -1,24 +1,27 @@
-// src/api.js
-import axios from "axios";
+import axios from 'axios';
 
-const API_BASE_URL = "http://localhost:8000"; // Adjust to your backend URL
+const API = axios.create({
+  baseURL: 'http://localhost:8000/api',
+});
 
+// ---------- Existing functions (unchanged) ----------
 export const getFixtures = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/fixtures`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching fixtures:", error);
-    return [];
-  }
+  const res = await API.get('/matches/fixtures/');
+  return res.data;
 };
 
-export const getLeagueStandings = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/clubs`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching league standings:", error);
-    return [];
-  }
+export const getLeagueStandings = async (seasonId) => {
+  const res = await API.get(`/league-standings/season/${seasonId}`);
+  return res.data;
+};
+
+// ---------- New player functions ----------
+export const getPlayers = async (params = {}) => {
+  const res = await API.get('/players/', { params });
+  return res.data;
+};
+
+export const getPlayerById = async (id) => {
+  const res = await API.get(`/players/${id}`);
+  return res.data;
 };
