@@ -1,12 +1,12 @@
 <template>
   <div class="player-profile">
-    <!-- Loading state -->
+    <!-- Loading -->
     <div v-if="loading" class="loading-container">
       <div class="spinner"></div>
       <p>Loading player profile...</p>
     </div>
 
-    <!-- Error state -->
+    <!-- Error -->
     <div v-else-if="error" class="error-container">
       <h2>Error loading player</h2>
       <p>{{ error }}</p>
@@ -14,12 +14,12 @@
     </div>
 
     <!-- Player loaded -->
-    <div v-else-if="player" class="profile-content">
+    <div v-else-if="player" class="profile-card">
       <!-- Back navigation -->
       <router-link to="/players" class="back-link">← Back to Players</router-link>
 
-      <!-- Hero card -->
-      <div class="hero-card">
+      <!-- Header -->
+      <div class="header-section">
         <div class="player-photo">
           <img
             :src="playerPhoto"
@@ -27,71 +27,46 @@
             @error="handleImageError"
           />
         </div>
-        <div class="player-info">
-          <h1 class="player-name">{{ player.name }}</h1>
-          <div class="ovr-badge">{{ player.overall_stats }}</div>
-          <div class="meta-grid">
-            <div class="meta-item">
-              <span class="label">Nationality</span>
-              <span class="value">{{ player.country_name || player.country }}</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Age</span>
-              <span class="value">{{ player.age }}</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Club</span>
-              <span class="value">{{ player.club_name || 'Unattached' }}</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Height</span>
-              <span class="value">{{ player.height }} cm</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Weight</span>
-              <span class="value">{{ player.weight }} kg</span>
-            </div>
-            <div class="meta-item">
-              <span class="label">Foot</span>
-              <span class="value">{{ player.foot?.toUpperCase() }}</span>
-            </div>
-          </div>
-          <div class="financials">
-            <div v-if="player.market_value" class="finance-item">
-              <span class="label">Market Value</span>
-              <span class="value">{{ formatCurrency(player.market_value) }}</span>
-            </div>
-            <div v-if="player.wage" class="finance-item">
-              <span class="label">Wage</span>
-              <span class="value">{{ formatCurrency(player.wage) }}/w</span>
-            </div>
-          </div>
-        </div>
+        <h1 class="player-name">{{ player.name }}</h1>
+        <div class="ovr-badge">{{ player.overall_stats }}</div>
       </div>
 
-      <!-- Attribute categories -->
-      <div class="attributes-section">
-        <h2>Attributes</h2>
-        <div class="categories-grid">
-          <div v-for="(cat, index) in attributeCategories" :key="index" class="category-card">
-            <h3 class="category-title">{{ cat.name }}</h3>
-            <ul class="attr-list">
-              <li v-for="attr in cat.attrs" :key="attr.key" class="attr-row">
-                <span class="attr-name">{{ attr.label }}</span>
-                <span class="attr-value">{{ attr.value }}</span>
-                <div class="attr-bar">
-                  <div class="bar-fill" :style="{ width: (attr.value / 99) * 100 + '%' }"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
+      <!-- Market Value badge -->
+      <div class="market-badge" v-if="player.market_value">
+        MARKET VALUE {{ formatCurrency(player.market_value) }}
+      </div>
+
+      <!-- Bio / meta -->
+      <div class="bio-grid">
+        <div class="bio-item">
+          <span class="label">Age</span>
+          <span class="value">{{ player.age }}</span>
+        </div>
+        <div class="bio-item">
+          <span class="label">Nationality</span>
+          <span class="value">{{ player.country_name || player.country }}</span>
+        </div>
+        <div class="bio-item">
+          <span class="label">Club</span>
+          <span class="value">{{ player.club_name || 'Free Agent' }}</span>
+        </div>
+        <div class="bio-item">
+          <span class="label">Height</span>
+          <span class="value">{{ player.height }} cm</span>
+        </div>
+        <div class="bio-item">
+          <span class="label">Weight</span>
+          <span class="value">{{ player.weight }} kg</span>
+        </div>
+        <div class="bio-item">
+          <span class="label">Foot</span>
+          <span class="value">{{ player.foot?.toUpperCase() }}</span>
         </div>
       </div>
 
       <!-- Positions -->
-      <div class="positions-section">
-        <h2>Positions</h2>
-        <div class="positions-grid">
+      <div class="positions-section" v-if="playerPositions.length">
+        <div class="positions-container">
           <div
             v-for="(pos, idx) in playerPositions"
             :key="idx"
@@ -103,14 +78,39 @@
         </div>
       </div>
 
-      <!-- Skills & Traits -->
+      <!-- Attribute blocks (vertical stack) -->
+      <div class="attributes-section">
+        <div v-for="(cat, index) in attributeCategories" :key="index" class="attribute-block">
+          <h2 class="block-title">{{ cat.name }}</h2>
+          <ul class="attr-list">
+            <li v-for="attr in cat.attrs" :key="attr.key" class="attr-row">
+              <span class="attr-label">{{ attr.label }}</span>
+              <span class="attr-value" :style="{ color: getAttrColor(attr.value) }">
+                {{ attr.value }}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Skills / traits (if any) -->
       <div class="skills-section" v-if="activeSkills.length">
-        <h2>Skills & Traits</h2>
-        <div class="skills-grid">
+        <h2 class="block-title">Traits</h2>
+        <div class="skills-container">
           <span v-for="skill in activeSkills" :key="skill.key" class="skill-badge">
             {{ skill.label }}
           </span>
         </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p class="copyright">© 2025 Pirate Football League</p>
+        <p class="social-links">
+          <a href="#">Twitter</a>
+          <a href="#">Twitch</a>
+          <a href="#">About</a>
+        </p>
       </div>
     </div>
   </div>
@@ -119,8 +119,8 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { getPlayerById } from '@/api'; // adjust path if necessary
-import { countryNameFromCode } from '@/utils/countryMapping'; // if you have this
+import { getPlayerById } from '@/api';
+// import { countryNameFromCode } from '@/utils/countryMapping'; // décommente une fois que l'export est corrigé
 
 const route = useRoute();
 const player = ref(null);
@@ -128,9 +128,8 @@ const loading = ref(true);
 const error = ref(null);
 const imageError = ref(false);
 
-// Compute player photo path (assumes player ID matches filename)
 const playerPhoto = computed(() => {
-  if (imageError.value || !player.value) return '/players/default.png'; // fallback image
+  if (imageError.value || !player.value) return '/players/default.png';
   return `/players/${player.value.id}.png`;
 });
 
@@ -138,17 +137,15 @@ function handleImageError() {
   imageError.value = true;
 }
 
-// Fetch player data by ID from route
 async function fetchPlayer(id) {
   loading.value = true;
   error.value = null;
   try {
     const data = await getPlayerById(id);
     player.value = data;
-    // Ensure country name mapping if you have the utility
-    if (player.value.country && countryNameFromCode) {
-      player.value.country_name = countryNameFromCode(player.value.country);
-    }
+    // if (player.value.country && typeof countryNameFromCode === 'function') {
+    //   player.value.country_name = countryNameFromCode(player.value.country);
+    // }
   } catch (e) {
     error.value = 'Player not found or network error.';
   } finally {
@@ -165,7 +162,6 @@ watch(() => route.params.id, (newId) => {
   if (newId) fetchPlayer(newId);
 });
 
-// Helper to format currency
 function formatCurrency(value) {
   if (value == null) return '–';
   return new Intl.NumberFormat('en-US', {
@@ -175,7 +171,14 @@ function formatCurrency(value) {
   }).format(value);
 }
 
-// Define attribute categories mapping from actual DB fields
+// Couleur des attributs selon les seuils FM24
+function getAttrColor(value) {
+  if (value >= 80) return '#4ade80'; // vert
+  if (value >= 70) return #facc15'; // jaune
+  return '#f87171'; // rouge
+}
+
+// Catégories d'attributs (identiques à avant)
 const attributeCategories = computed(() => {
   if (!player.value) return [];
   return [
@@ -236,12 +239,11 @@ const attributeCategories = computed(() => {
   ];
 });
 
-// Process positions from DB (assuming player.positions contains e.g., { gk: true/false, ... })
+// Positions
 const playerPositions = computed(() => {
   if (!player.value) return [];
   const posMap = player.value.positions;
   if (!posMap) return [];
-  // Map of abbreviation and type (natural or experienced)
   const allPositions = [
     { key: 'gk', abbr: 'GK' },
     { key: 'cb', abbr: 'CB' },
@@ -265,28 +267,29 @@ const playerPositions = computed(() => {
     }));
 });
 
-// Skills (boolean traits)
+// Skills / traits
 const activeSkills = computed(() => {
   if (!player.value) return [];
   const skillFields = [
     { key: 'trickster', label: 'Trickster' },
     { key: 'gamesmanship', label: 'Gamesmanship' },
     { key: 'fighting_spirit', label: 'Fighting Spirit' },
-    // add all other boolean fields you have
-    // check player_schema.py for the full list
+    // Ajoute ici tous les autres champs booléens de ton modèle
   ];
   return skillFields.filter(s => player.value[s.key] === true);
 });
 </script>
 
 <style scoped>
-/* Global reset & dark theme (tailwind or custom?) – using scoped styles for now */
+/* Dark FM24 vertical card */
 .player-profile {
   min-height: 100vh;
-  background: #0f172a;
+  background-color: #0f1115;
   color: #e2e8f0;
-  padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .loading-container,
@@ -301,8 +304,8 @@ const activeSkills = computed(() => {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid #334155;
-  border-top: 4px solid #38bdf8;
+  border: 4px solid #2d3748;
+  border-top: 4px solid #fbbf24;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -318,182 +321,191 @@ const activeSkills = computed(() => {
   font-weight: 600;
   transition: color 0.2s;
 }
+.back-link:hover { color: #fbbf24; }
 
-.back-link:hover {
-  color: #38bdf8;
+.profile-card {
+  max-width: 480px;
+  width: 100%;
+  background: #1a1d24;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
 }
 
-.hero-card {
-  display: flex;
-  gap: 2rem;
-  background: #1e293b;
-  border-radius: 12px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+/* Header */
+.header-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
+.player-photo {
+  margin-bottom: 0.75rem;
+}
 .player-photo img {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #38bdf8;
+  border: 3px solid #fbbf24;
 }
 
 .player-name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
-  margin: 0 0 0.5rem;
+  color: #fbbf24;
+  margin: 0.25rem 0;
 }
 
 .ovr-badge {
-  background: #f97316;
-  color: #fff;
   display: inline-block;
-  padding: 0.25rem 1rem;
+  background: #d97706;
+  color: white;
+  padding: 0.2rem 1.2rem;
   border-radius: 20px;
   font-weight: 700;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin-top: 0.25rem;
 }
 
-.meta-grid {
+.market-badge {
+  background: #166534;
+  color: white;
+  text-align: center;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+/* Bio grid */
+.bio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin: 1rem 0;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
 }
-
-.meta-item .label {
+.bio-item .label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #9ca3af;
 }
-
-.meta-item .value {
+.bio-item .value {
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
-.financials {
+/* Positions */
+.positions-section {
+  margin-bottom: 1.5rem;
+}
+.positions-container {
   display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
 }
-
-.finance-item .label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-.finance-item .value {
+.position-badge {
+  padding: 0.25rem 0.9rem;
+  border-radius: 6px;
   font-weight: 700;
-  color: #38bdf8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.position-badge.natural {
+  background: #166534;
+  color: #bbf7d0;
+}
+.position-badge.experienced {
+  background: #854d0e;
+  color: #fef08a;
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #334155;
-  padding-bottom: 0.5rem;
-}
-
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
+/* Attribute blocks */
+.attributes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
-
-.category-card {
-  background: #1e293b;
-  border-radius: 8px;
+.attribute-block {
+  background: #1e222b;
+  border-radius: 12px;
   padding: 1rem;
 }
-
-.category-title {
-  font-size: 1rem;
+.block-title {
+  font-size: 1.1rem;
   text-transform: uppercase;
-  color: #38bdf8;
+  font-weight: 700;
+  color: white;
+  text-align: center;
   margin-bottom: 0.75rem;
 }
 
 .attr-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
-
 .attr-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.4rem;
+  align-items: center;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #2d3340;
+}
+.attr-row:last-child {
+  border-bottom: none;
 }
 
-.attr-name {
-  flex: 1;
+.attr-label {
   font-size: 0.85rem;
 }
-
 .attr-value {
   font-weight: 700;
-  width: 2rem;
+  font-size: 0.95rem;
+  min-width: 2rem;
   text-align: right;
-  margin-right: 0.75rem;
 }
 
-.attr-bar {
-  width: 80px;
-  height: 6px;
-  background: #334155;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.bar-fill {
-  height: 100%;
-  background: #38bdf8;
-  border-radius: 3px;
-}
-
-.positions-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+/* Skills / traits */
+.skills-section {
   margin-bottom: 2rem;
 }
-
-.position-badge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-}
-
-.position-badge.natural {
-  background: #166534;
-  color: #bbf7d0;
-}
-
-.position-badge.experienced {
-  background: #854d0e;
-  color: #fef08a;
-}
-
-.skills-grid {
+.skills-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: center;
 }
-
 .skill-badge {
-  background: #312e81;
-  color: #e0e7ff;
-  padding: 0.25rem 0.75rem;
+  background: #1f2a44;
+  color: #c7d2fe;
+  padding: 0.2rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
+}
+
+/* Footer */
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  border-top: 1px solid #2d3748;
+  padding-top: 1rem;
+}
+.copyright {
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.social-links a {
+  color: #60a5fa;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.social-links a:hover {
+  color: #fbbf24;
 }
 </style>

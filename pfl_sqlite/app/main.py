@@ -43,7 +43,7 @@ from app.routers import (
 
 # 📡 Include API routers
 app.include_router(admin_log_router.router, prefix="/admin_logs", tags=["Admin Logs"])
-app.include_router(player_router.router, prefix="/players", tags=["Players"])
+app.include_router(player_router.router, tags=["Players"])
 app.include_router(season_router.router, prefix="/seasons", tags=["Seasons"])
 app.include_router(transfer_router.router, prefix="/transfers", tags=["Transfers"])
 app.include_router(match_router.router, prefix="/matches", tags=["Matches"])
