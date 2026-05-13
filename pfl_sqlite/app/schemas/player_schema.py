@@ -1,6 +1,6 @@
 from __future__ import annotations
 from pydantic import BaseModel
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Dict
 from datetime import datetime
 
 if TYPE_CHECKING:
@@ -126,6 +126,7 @@ class PlayerOut(PlayerBase):
     club: Optional["ClubShort"] = None
     created_at: datetime
     updated_at: datetime
+    positions: Optional[Dict] = None
 
     class Config:
         from_attributes = True

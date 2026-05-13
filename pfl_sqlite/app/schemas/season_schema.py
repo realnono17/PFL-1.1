@@ -13,8 +13,7 @@ class MatchdaySchema(BaseModel):
     number: int
     is_completed: bool
 
-    class Config:
-        orm_mode = True
+model_config = {"from_attributes": True}
 
 class SeasonResponse(BaseModel):
     id: int
@@ -23,5 +22,4 @@ class SeasonResponse(BaseModel):
     current_matchday: int
     matchdays: List[MatchdaySchema] = []
 
-    class Config:
-        orm_mode = True
+model_config = {"from_attributes": True}

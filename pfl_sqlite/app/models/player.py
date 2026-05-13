@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey, DateTime, JSON
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from .base import Base
@@ -117,6 +117,9 @@ class Player(Base):
     rwf = Column(String)
     ss = Column(String)
     cf = Column(String)
+
+    # Positional Proficiency (JSON object, e.g. {"gk": true, "cb": false, ...})
+    positions = Column(JSON, default=dict)
 
     # Timestamps
     created_at = Column(DateTime, default=datetime.utcnow)

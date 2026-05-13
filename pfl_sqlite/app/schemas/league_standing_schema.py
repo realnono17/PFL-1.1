@@ -16,5 +16,4 @@ class LeagueStandingOut(BaseModel):
     goal_difference: int
     club_name: Optional[str]
 
-    class Config:
-        orm_mode = True
+model_config = {"from_attributes": True}

@@ -103,10 +103,20 @@ def import_players(file_path: str):
             "club_id": None if is_single_player else club.id,
         }
 
-        for pos in ["gk", "cb", "lb", "rb", "dmf", "cmf", "lmf", "rmf", "amf", "lwf", "rwf", "ss", "cf"]:
-            player_data[pos] = map_position(row.get(pos))
+        # Construire le dictionnaire des positions (JSON)
+    positions_dict = {}
+    for pos in ["gk", "cb", "lb", "rb", "dmf", "cmf", "lmf", "rmf", "amf", "lwf", "rwf", "ss", "cf"]:
+        val = map_position(row.get(pos))
+    if val is not None:   # on ne stocke que les postes connus
+        positions_dict[pos] = val
+        player_data["positions"] = positions_dict
 
-        for stat in [
+    # Remplir aussi les colonnes individuelles (compatibilité temporaire)
+        for pos in ["gk", "cb", "lb", "rb", "dmf", "cmf", "lmf", "rmf", "amf", "lwf", "rwf", "ss", "cf"]:
+            val = map_position(row.get(pos))
+    player_data[pos] = "natural" if val is True else ("experienced" if val is False else "hidden")
+
+    for stat in [
             "offensive_awareness", "ball_control", "dribbling", "tight_possession", "low_pass", "lofted_pass",
             "finishing", "heading", "place_kicking", "curl", "speed", "acceleration", "kicking_power", "jump",
             "physical_contact", "balance", "stamina", "defensive_awareness", "ball_winning", "aggression",
@@ -115,7 +125,7 @@ def import_players(file_path: str):
         ]:
             player_data[stat] = int(row.get(stat) or 0)
 
-        for skill in [
+            for skill in [
             "trickster", "mazing_run", "speeding_bullet", "incisive_run", "long_ball_expert", "early_cross",
             "long_ranger", "scissors_feint", "double_touch", "flip_flap", "marseille_turn", "sombrero",
             "cross_over_turn", "cut_behind_and_turn", "scotch_move", "step_on_skillcontrol", "heading_special",
@@ -126,29 +136,29 @@ def import_players(file_path: str):
             "gk_penalty_saver", "gamesmanship", "man_marking", "track_back", "interception", "acrobatic_clear",
             "captaincy", "super_sub", "fighting_spirit"
         ]:
-            player_data[skill] = map_boolean(row.get(skill))
+                player_data[skill] = map_boolean(row.get(skill))
 
-        try:
+    try:
             code = int(player_data.get("country") or 0)
-        except ValueError:
+    except ValueError:
             code = 0
-        multiplier = country_multiplier.get(code, country_multiplier.get("default", 1.0))
-        ovr = player_data["overall_stats"]
-        player_data["market_value"] = compute_player_value(ovr, multiplier)
-        player_data["wage"] = compute_wage(player_data["market_value"])
+    multiplier = country_multiplier.get(code, country_multiplier.get("default", 1.0))
+    ovr = player_data["overall_stats"]
+    player_data["market_value"] = compute_player_value(ovr, multiplier)
+    player_data["wage"] = compute_wage(player_data["market_value"])
 
 
-        player = db.query(Player).filter(Player.name == player_data["name"], Player.pes_id == player_data["pes_id"]).first()
-        if player:
+    player = db.query(Player).filter(Player.name == player_data["name"], Player.pes_id == player_data["pes_id"]).first()
+    if player:
             for k, v in player_data.items():
                 setattr(player, k, v)
             print(f"🔄 Updated: {player.name}")
-        else:
+    else:
             new_player = Player(**player_data)
             db.add(new_player)
             print(f"✅ Added: {new_player.name}")
 
-        db.commit()
+    db.commit()
     db.close()
 
 if __name__ == "__main__":

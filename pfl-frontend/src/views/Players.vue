@@ -324,7 +324,7 @@ export default {
       this.loading = true;
       this.error = null;
       axios
-        .get("http://localhost:8000/players/players", {
+        .get("http://localhost:8000/players", {
           params: { skip: this.skip, limit: this.limit },
         })
         .then((response) => {
