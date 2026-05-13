@@ -32,7 +32,7 @@ def get_club_players(club_id: int, db: Session = Depends(get_db)):
     return db.query(Player).filter(Player.club_id == club_id).all()
 
 # 🔐 Admin Only: Create club
-@router.post("/", response_model=ClubOut,) #dependencies=[Depends(require_admin)])
+@router.post("/", response_model=ClubOut, dependencies=[Depends(require_admin)])
 def create_club(club: ClubCreate, db: Session = Depends(get_db)):
     db_club = Club(**club.model_dump())
     db.add(db_club)
@@ -41,7 +41,7 @@ def create_club(club: ClubCreate, db: Session = Depends(get_db)):
     return db_club
 
 # 🔐 Admin Only: Update club
-@router.put("/{club_id}", response_model=ClubOut,) #dependencies=[Depends(require_admin)])
+@router.put("/{club_id}", response_model=ClubOut, dependencies=[Depends(require_admin)])
 def update_club(club_id: int, club_update: ClubUpdate, db: Session = Depends(get_db)):
     club = db.query(Club).filter(Club.id == club_id).first()
     if not club:
@@ -55,7 +55,7 @@ def update_club(club_id: int, club_update: ClubUpdate, db: Session = Depends(get
     return club
 
 # 🔐 Admin Only: Delete club
-@router.delete("/{club_id}",) #dependencies=[Depends(require_admin)])
+@router.delete("/{club_id}", dependencies=[Depends(require_admin)])
 def delete_club(club_id: int, db: Session = Depends(get_db)):
     db_club = db.query(Club).get(club_id)
     if not db_club:

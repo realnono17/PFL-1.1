@@ -9,7 +9,7 @@ from app.dependencies import require_admin, restrict_to_club
 router = APIRouter(prefix="/finance", tags=["Finance"])
 
 
-@router.get("/", response_model=List[FinanceOut],) #dependencies=[Depends(require_admin)])
+@router.get("/", response_model=List[FinanceOut], dependencies=[Depends(require_admin)])
 def get_all_finances(db: Session = Depends(get_db)):
     return db.query(Finance).all()
 
@@ -22,7 +22,7 @@ def get_finance_by_club(club_id: int, allowed=Depends(lambda: restrict_to_club(c
     return finance
 
 
-@router.post("/", response_model=FinanceOut,) #dependencies=[Depends(require_admin)])
+@router.post("/", response_model=FinanceOut, dependencies=[Depends(require_admin)])
 def create_finance(finance: FinanceCreate, db: Session = Depends(get_db)):
     db_finance = Finance(**finance.model_dump())
     db.add(db_finance)
@@ -31,7 +31,7 @@ def create_finance(finance: FinanceCreate, db: Session = Depends(get_db)):
     return db_finance
 
 
-@router.put("/{club_id}", response_model=FinanceOut,) #dependencies=[Depends(require_admin)])
+@router.put("/{club_id}", response_model=FinanceOut, dependencies=[Depends(require_admin)])
 def update_finance(club_id: int, update: FinanceUpdate, db: Session = Depends(get_db)):
     finance = db.query(Finance).filter(Finance.club_id == club_id).first()
     if not finance:
@@ -43,7 +43,7 @@ def update_finance(club_id: int, update: FinanceUpdate, db: Session = Depends(ge
     return finance
 
 
-@router.delete("/{club_id}",) #dependencies=[Depends(require_admin)])
+@router.delete("/{club_id}", dependencies=[Depends(require_admin)])
 def delete_finance(club_id: int, db: Session = Depends(get_db)):
     finance = db.query(Finance).filter(Finance.club_id == club_id).first()
     if not finance:

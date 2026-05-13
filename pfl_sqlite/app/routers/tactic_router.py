@@ -22,7 +22,7 @@ def get_tactic(tactic_id: int, db: Session = Depends(get_db)):
     return tactic
 
 
-@router.post("/", response_model=TacticOut,) #dependencies=[Depends(require_admin)])
+@router.post("/", response_model=TacticOut, dependencies=[Depends(require_admin)])
 def create_tactic(tactic: TacticCreate, db: Session = Depends(get_db)):
     db_tactic = Tactic(**tactic.model_dump())
     db.add(db_tactic)
@@ -31,7 +31,7 @@ def create_tactic(tactic: TacticCreate, db: Session = Depends(get_db)):
     return db_tactic
 
 
-@router.put("/{tactic_id}", response_model=TacticOut,) #dependencies=[Depends(require_admin)])
+@router.put("/{tactic_id}", response_model=TacticOut, dependencies=[Depends(require_admin)])
 def update_tactic(tactic_id: int, tactic: TacticUpdate, db: Session = Depends(get_db)):
     db_tactic = db.query(Tactic).get(tactic_id)
     if not db_tactic:
@@ -43,7 +43,7 @@ def update_tactic(tactic_id: int, tactic: TacticUpdate, db: Session = Depends(ge
     return db_tactic
 
 
-@router.delete("/{tactic_id}",) #dependencies=[Depends(require_admin)])
+@router.delete("/{tactic_id}", dependencies=[Depends(require_admin)])
 def delete_tactic(tactic_id: int, db: Session = Depends(get_db)):
     db_tactic = db.query(Tactic).get(tactic_id)
     if not db_tactic:

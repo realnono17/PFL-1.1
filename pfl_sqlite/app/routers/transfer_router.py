@@ -91,7 +91,7 @@ def create_transfer(transfer: TransferCreate, db: Session = Depends(get_db)):
     db.refresh(db_transfer)
     return db_transfer
 
-@router.put("/{transfer_id}", response_model=TransferOut,) #dependencies=[Depends(require_admin)])
+@router.put("/{transfer_id}", response_model=TransferOut, dependencies=[Depends(require_admin)])
 def update_transfer(transfer_id: int, transfer: TransferUpdate, db: Session = Depends(get_db)):
     db_transfer = db.query(Transfer).get(transfer_id)
     if not db_transfer:
@@ -103,7 +103,7 @@ def update_transfer(transfer_id: int, transfer: TransferUpdate, db: Session = De
     return db_transfer
 
 
-@router.delete("/{transfer_id}",) #dependencies=[Depends(require_admin)])
+@router.delete("/{transfer_id}", dependencies=[Depends(require_admin)])
 def delete_transfer(transfer_id: int, db: Session = Depends(get_db)):
     db_transfer = db.query(Transfer).get(transfer_id)
     if not db_transfer:
